@@ -1,6 +1,7 @@
 package com.Shadersoft.UniverseMG.Handlers;
 
 import com.Shadersoft.UniverseMG.UniverseMG;
+import java.util.HashMap;
 import org.bukkit.command.CommandExecutor;
 
 
@@ -8,13 +9,21 @@ public class CommandHandler implements UMGHandler
 {
     public UniverseMG plugin = UniverseMG.plugin;
     
-    public void registerCommand(String command, CommandExecutor executor)
+    public HashMap<String, CommandExecutor> getCommands()
+    {
+        return plugin.commandList;
+    }
+    
+    private void registerCommand(String command, CommandExecutor executor)
     {
         plugin.getCommand(command).setExecutor(executor);
     }
     
-    public void registerCommands()
+    public void registerCommands(HashMap<String, CommandExecutor> commandlist)
     {
-        //No commands registered
+        for(String command : commandlist.keySet())
+        {
+            registerCommand(command, commandlist.get(command));
+        }
     }
 }
