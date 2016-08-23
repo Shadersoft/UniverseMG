@@ -6,5 +6,4 @@ import org.bukkit.command.CommandExecutor;
 
 public interface UMGCommand extends CommandExecutor
 {
-
 }

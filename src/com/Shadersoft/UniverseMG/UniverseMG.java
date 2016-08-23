@@ -1,8 +1,9 @@
 package com.Shadersoft.UniverseMG;
 
-import com.Shadersoft.UniverseMG.Commands.Command_test;
+import com.Shadersoft.UniverseMG.Commands.*;
 import com.Shadersoft.UniverseMG.Handlers.Handlerlist;
 import java.util.HashMap;
+import java.util.List;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -14,6 +15,7 @@ public class UniverseMG extends JavaPlugin {
     public FileConfiguration config;
     public String pluginName;
     public String pluginVersion;
+    public List<String> pluginAuthors;
     public PluginDescriptionFile info;
     public HashMap<String, CommandExecutor> commandList = new HashMap();
     
@@ -29,10 +31,12 @@ public class UniverseMG extends JavaPlugin {
         info = getDescription();
         pluginName = info.getFullName();
         pluginVersion = info.getVersion();
+        pluginAuthors = info.getAuthors();
 
         //Initialize Commands
-        commandList.put("test", new Command_test());
+        commandList.put("universemg", new Command_universemg());
         
+        //Register Commands
         this.handlers.commandHandler.registerCommands(commandList);
         
         //Send Message
