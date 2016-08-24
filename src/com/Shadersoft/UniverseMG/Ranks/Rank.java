@@ -20,8 +20,8 @@ public enum Rank
     HELPER(RankType.STAFF, "Helper", 1, "Helper", ChatColor.AQUA),
     
     PLAYER(RankType.PLAYER, "Player", 0, null, ChatColor.WHITE),
-    IMPOSTOR(RankType.PLAYER, "Impostor", -1, "Imp", ChatColor.ITALIC);
-    
+    IMPOSTOR(RankType.PLAYER, "Imposter(IP)", -1, "Imp", ChatColor.ITALIC);
+    //not sure if we need imposter, server is not cracked?
     
     Rank(RankType type, String name, int priority, String tag, ChatColor color)
     {
