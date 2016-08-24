@@ -24,7 +24,7 @@ public class Command_universemg implements UMGCommand
             return true;
         }
         String[] lines = {
-            ChatColor.RED + "This server uses the UniverseMG plugin.",
+            ChatColor.RED + "This server is running UniverseMG 1.0.",
             ChatColor.RED + "Version: " + ChatColor.YELLOW + UniverseMG.plugin.pluginVersion + ChatColor.RED + ".",
             ChatColor.RED + "By: " + ChatColor.YELLOW + StringUtils.join(UniverseMG.plugin.pluginAuthors, ChatColor.RED + ", " + ChatColor.YELLOW) + ChatColor.RED + "."
         };
