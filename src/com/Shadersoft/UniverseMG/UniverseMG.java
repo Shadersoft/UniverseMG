@@ -2,15 +2,17 @@ package com.Shadersoft.UniverseMG;
 
 import com.Shadersoft.UniverseMG.Commands.*;
 import com.Shadersoft.UniverseMG.Handlers.Handlerlist;
+import com.Shadersoft.UniverseMG.Ranks.Rank;
 import java.util.HashMap;
 import java.util.List;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class UniverseMG extends JavaPlugin {
-
+public class UniverseMG extends JavaPlugin 
+{   
     public static UniverseMG plugin;
     public FileConfiguration config;
     public String pluginName;
@@ -18,6 +20,8 @@ public class UniverseMG extends JavaPlugin {
     public List<String> pluginAuthors;
     public PluginDescriptionFile info;
     public HashMap<String, CommandExecutor> commandList = new HashMap();
+    public HashMap<Player, Rank> adminList = new HashMap();
+    public Rank rank;
     
     public Handlerlist handlers;
 
@@ -38,6 +42,9 @@ public class UniverseMG extends JavaPlugin {
         
         //Register Commands
         this.handlers.commandHandler.registerCommands(commandList);
+        
+        //Register admins
+        adminList = rank.getAdminList();
         
         //Send Message
         System.out.println(pluginName + " version " + pluginVersion + " has been enabled!");
