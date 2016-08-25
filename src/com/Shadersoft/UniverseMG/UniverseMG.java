@@ -38,13 +38,17 @@ public class UniverseMG extends JavaPlugin
         pluginAuthors = info.getAuthors();
 
         //Initialize Commands
-        commandList.put("universemg", new Command_universemg());
-        
-        //Register Commands
-        this.handlers.commandHandler.registerCommands(commandList);
+        getCommand("universemg").setExecutor(new Command_universemg());
+        getCommand("addadmin").setExecutor(new Command_addadmin());
         
         //Register admins
-        adminList = rank.getAdminList();
+        if(config.contains("rank"))
+        {
+            adminList = rank.getAdminList();
+        }
+        
+        //Create config
+        this.saveDefaultConfig();
         
         //Send Message
         System.out.println(pluginName + " version " + pluginVersion + " has been enabled!");

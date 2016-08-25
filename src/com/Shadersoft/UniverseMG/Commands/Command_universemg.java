@@ -6,11 +6,12 @@ import com.Shadersoft.UniverseMG.UniverseMG;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 
-public class Command_universemg implements UMGCommand
+public class Command_universemg implements CommandExecutor
 {
     public UniverseMG plugin = UniverseMG.plugin;
     
@@ -18,7 +19,7 @@ public class Command_universemg implements UMGCommand
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) 
     {
         if(args.length != 0) {return false;}
-        if(plugin.config.getBoolean("console_is_owner") && !(sender instanceof Player) || plugin.rank.getPlayerRank((Player)sender).getPriority() < this.getRank().getPriority())
+        if(sender instanceof Player && plugin.rank.getPlayerRank((Player)sender).getPriority() < this.getRank().getPriority())
         {
             sender.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
             return true;
@@ -33,7 +34,6 @@ public class Command_universemg implements UMGCommand
         return true;
     }
 
-    @Override
     public Rank getRank() {
         return Rank.PLAYER;
     }
