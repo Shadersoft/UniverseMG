@@ -48,6 +48,9 @@ public class UniverseMG extends JavaPlugin
         //Initialize Commands
         getCommand("universemg").setExecutor(new Command_universemg());
         getCommand("addadmin").setExecutor(new Command_addadmin());
+        getCommand("unban").setExecutor(new Command_unban());
+        getCommand("ban").setExecutor(new Command_ban());
+        getCommand("banhistory").setExecutor(new Command_banhistory());
         
         // Listeners / Handlers
         getServer().getPluginManager().registerEvents(new PlayerHandler(this), this);
