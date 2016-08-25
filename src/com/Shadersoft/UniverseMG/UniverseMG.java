@@ -3,6 +3,7 @@ package com.Shadersoft.UniverseMG;
 import com.Shadersoft.UniverseMG.Banning.BanConfig;
 import com.Shadersoft.UniverseMG.Commands.*;
 import com.Shadersoft.UniverseMG.Handlers.Handlerlist;
+import com.Shadersoft.UniverseMG.Handlers.PlayerHandler;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import java.util.HashMap;
 import java.util.List;
@@ -47,6 +48,9 @@ public class UniverseMG extends JavaPlugin
         //Initialize Commands
         getCommand("universemg").setExecutor(new Command_universemg());
         getCommand("addadmin").setExecutor(new Command_addadmin());
+        
+        // Listeners / Handlers
+        getServer().getPluginManager().registerEvents(new PlayerHandler(this), this);
         
         //Register admins
         if(config.contains("rank"))
