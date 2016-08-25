@@ -1,6 +1,6 @@
 package com.Shadersoft.UniverseMG.Commands;
 
-import com.Shadersoft.UniverseMG.Commands.*;
+import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
@@ -22,7 +22,7 @@ public class Command_addadmin implements CommandExecutor
         if(args.length != 2) {return false;}
         if(sender instanceof Player && plugin.rank.getPlayerRank((Player)sender).getPriority() < this.getRank().getPriority())
         {
-            sender.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
+            sender.sendMessage(Messages.MSG_NO_PERMS);
             return true;
         }
         Player player = Bukkit.getPlayer(args[0]);

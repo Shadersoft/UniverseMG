@@ -1,12 +1,10 @@
 package com.Shadersoft.UniverseMG.Ranks;
 
-import com.Shadersoft.UniverseMG.Ranks.*;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import java.util.HashMap;
 import java.util.Set;
 import static org.bukkit.Bukkit.getPlayer;
 import org.bukkit.ChatColor;
-import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
 

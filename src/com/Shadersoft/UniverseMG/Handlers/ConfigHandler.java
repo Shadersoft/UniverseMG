@@ -3,8 +3,6 @@ package com.Shadersoft.UniverseMG.Handlers;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import java.util.HashMap;
 import java.util.Set;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
 
 
 public class ConfigHandler implements UMGHandler

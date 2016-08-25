@@ -1,6 +1,6 @@
 package com.Shadersoft.UniverseMG.Commands;
 
-import com.Shadersoft.UniverseMG.Commands.*;
+import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import org.apache.commons.lang.StringUtils;
@@ -21,7 +21,7 @@ public class Command_universemg implements CommandExecutor
         if(args.length != 0) {return false;}
         if(sender instanceof Player && plugin.rank.getPlayerRank((Player)sender).getPriority() < this.getRank().getPriority())
         {
-            sender.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
+            sender.sendMessage(Messages.MSG_NO_PERMS);
             return true;
         }
         String[] lines = {

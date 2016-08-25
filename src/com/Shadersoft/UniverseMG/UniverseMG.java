@@ -1,5 +1,6 @@
 package com.Shadersoft.UniverseMG;
 
+import com.Shadersoft.UniverseMG.Banning.BanConfig;
 import com.Shadersoft.UniverseMG.Commands.*;
 import com.Shadersoft.UniverseMG.Handlers.Handlerlist;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
@@ -15,6 +16,7 @@ public class UniverseMG extends JavaPlugin
 {   
     public static UniverseMG plugin;
     public FileConfiguration config;
+    public BanConfig banconfig;
     public String pluginName;
     public String pluginVersion;
     public List<String> pluginAuthors;
@@ -24,6 +26,11 @@ public class UniverseMG extends JavaPlugin
     public Rank rank;
     
     public Handlerlist handlers;
+    
+    public UniverseMG()
+    {
+        this.banconfig = new BanConfig(this);
+    }
 
     @Override
     public void onEnable()
