@@ -1,0 +1,12 @@
+name: UniverseMG
+version: 1.0
+authors: [SorryIm2Fresh, Mafrans]
+main: com.Shadersoft.UniverseMG.UniverseMG
+
+commands:
+    universemg:
+        description: Shows information about the plugin.
+        usage: /<command>
+    addadmin:
+        description: Adds an admin.
+        usage: /<command> <player> <rank>

@@ -18,9 +18,9 @@ public class Command_universemg implements UMGCommand
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) 
     {
         if(args.length != 0) {return false;}
-        if(plugin.rank.getPlayerRank((Player)sender).getPriority() < this.getRank().getPriority())
+        if(plugin.config.getBoolean("console_is_owner") && !(sender instanceof Player) || plugin.rank.getPlayerRank((Player)sender).getPriority() < this.getRank().getPriority())
         {
-            sender.sendMessage(net.md_5.bungee.api.ChatColor.RED + "You do not have permission to use this command!");
+            sender.sendMessage(ChatColor.RED + "You do not have permission to use this command!");
             return true;
         }
         String[] lines = {

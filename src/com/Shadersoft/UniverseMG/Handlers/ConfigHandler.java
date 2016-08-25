@@ -7,7 +7,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 
-public class ConfigManager 
+public class ConfigHandler implements UMGHandler
 {
     public UniverseMG plugin = UniverseMG.plugin;
     public void saveHashMap(HashMap hm, String prefix)
@@ -36,5 +36,16 @@ public class ConfigManager
             plugin.config.set(prefix + obj.toString(), hm.get(obj));
         }
         plugin.saveConfig();
+    }
+    
+    public HashMap<String, String> getStringHashMap(String prefix)
+    {
+        HashMap<String, String> map = new HashMap();
+        Set<String> keys = plugin.config.getConfigurationSection(prefix).getKeys(false);
+        for(String key : keys)
+        {
+            map.put(key, plugin.config.getString(prefix + "." + key));
+        }
+        return map;
     }
 }

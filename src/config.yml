@@ -1,0 +1,9 @@
+#UniveseMG Config
+
+#Gives the default CONSOLE owner privilegies
+console_is_owner: true
+
+
+#Rank config
+ranks:
+    mafrans: MAINDEV

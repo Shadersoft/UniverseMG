@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 public enum Rank
 {
     OWNER(RankType.OWNER, "Owner", 6, "Owner", ChatColor.DARK_RED),
-    MDEV(RankType.STAFF, "M Developer", 5, "MDev", ChatColor.YELLOW),
+    MAINDEV(RankType.STAFF, "Main Developer", 5, "MDev", ChatColor.YELLOW),
     DEV(RankType.STAFF, "Developer", 4, "Dev", ChatColor.DARK_PURPLE),
     ADMIN(RankType.STAFF, "Admin", 3, "Admin", ChatColor.GOLD),
     MOD(RankType.STAFF, "Moderator", 2, "Mod", ChatColor.GREEN),
@@ -65,7 +65,7 @@ public enum Rank
     public void addAdmin(Player admin, Rank rank)
     {
         plugin.adminList.put(admin, rank);
-        plugin.handlers.configManager.overrideSaveHashMap(plugin.adminList, "ranks");
+        plugin.handlers.configHandler.overrideSaveHashMap(plugin.adminList, "ranks");
     }
     
     public Rank getPlayerRank(Player player)
@@ -93,6 +93,6 @@ public enum Rank
     public void removeAdmin(Player admin)
     {
         plugin.adminList.remove(admin);
-        plugin.handlers.configManager.overrideSaveHashMap(plugin.adminList, "ranks");
+        plugin.handlers.configHandler.overrideSaveHashMap(plugin.adminList, "ranks");
     }
 }
