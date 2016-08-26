@@ -20,3 +20,6 @@ commands:
     banhistory:
         description: Checks a ban history of a player.
         usage: /<command> <player>
+    adminlist:
+        description: Gets the admin list.
+        usage: /<command> <list>
