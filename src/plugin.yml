@@ -23,3 +23,7 @@ commands:
     adminlist:
         description: Gets the admin list.
         usage: /<command> <list>
+    sban:
+        description: Ban a player without the broadcast.
+        usage: /<command> <player> <reason>
+        aliases: silentban

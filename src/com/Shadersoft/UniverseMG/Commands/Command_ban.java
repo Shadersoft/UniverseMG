@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
+import net.md_5.bungee.api.ChatColor;
 
 public class Command_ban implements UMGCommand
 {
@@ -52,6 +53,7 @@ public class Command_ban implements UMGCommand
                 target.kickPlayer(Messages.MOD_TAG + sender.getName() + " has banned you " + reason
                                   + " appeal @   " + plugin.config.getBoolean("forums"));
                 target.setBanned(true);
+                sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + target.getName());
 
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
@@ -67,6 +69,7 @@ public class Command_ban implements UMGCommand
                 String reason = "You're account have been suspended from UniverseMG";
 
                 offlineTarget.setBanned(true);
+                sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + offlineTarget.getName());
 
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
@@ -94,6 +97,8 @@ public class Command_ban implements UMGCommand
 
                 target.kickPlayer("Your account has been suspended from UniverseMG \nReason: �c" + reason);
                 target.setBanned(true);
+                
+                sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + target.getName());
 
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
@@ -115,6 +120,8 @@ public class Command_ban implements UMGCommand
 
                 offlineTarget.setBanned(true);
 
+                sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + offlineTarget.getName());
+                
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
                     p.sendMessage(Messages.STAFF + sender.getName() + " BANNED " + offlineTarget.getName()
