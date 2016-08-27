@@ -95,7 +95,7 @@ public class Command_ban implements UMGCommand
                     reason = reason + args[i] + " ";
                 }
 
-                target.kickPlayer("Your account has been suspended from UniverseMG \nReason: �c" + reason);
+                target.kickPlayer("Your account has been suspended from UniverseMG \nReason: " + reason);
                 target.setBanned(true);
                 
                 sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + target.getName());
