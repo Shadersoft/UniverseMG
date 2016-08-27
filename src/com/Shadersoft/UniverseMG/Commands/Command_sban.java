@@ -102,7 +102,7 @@ public class Command_sban implements UMGCommand
 
                 offlineTarget.setBanned(true);
 
-                sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + offlineTarget.getName());
+                sender.sendMessage(Messages.MOD_TAG + "[SILENT] Banned " + ChatColor.DARK_RED + offlineTarget.getName());
 
                 this.plugin.banconfig.getConfig().set(offlineTarget.getName().toLowerCase(), reason);
                 this.plugin.banconfig.saveConfig();
