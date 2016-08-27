@@ -35,7 +35,7 @@ public class Command_banhistory implements UMGCommand
         {
             if(this.plugin.banconfig.getConfig().contains(args[0].toLowerCase()))
             {
-                sender.sendMessage(Messages.MOD_TAG + args[0] + " is banned for "
+                sender.sendMessage(Messages.MOD_TAG + args[0] + " was banned for "
                                    + this.plugin.banconfig.getConfig().getString(args[0].toLowerCase()));
             }
             else
