@@ -26,7 +26,11 @@ public class ChatHandler implements Listener
         if(plugin.playerChats.containsKey(player))
         {
             ChatUtils.specialChatMessage(player, event.getMessage(), plugin.playerChats.get(player));
-                    event.setCancelled(true);
+            event.setCancelled(true);
+        }
+        if(plugin.muted.contains(player))
+        {
+            event.setCancelled(true);
         }
     }
 }
