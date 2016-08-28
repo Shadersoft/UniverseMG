@@ -1,13 +1,11 @@
 package com.Shadersoft.UniverseMG.Commands;
 
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
-import org.bukkit.entity.Player;
 
 public class Command_banhistory implements UMGCommand
 {

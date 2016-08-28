@@ -1,5 +1,6 @@
 package com.Shadersoft.UniverseMG;
 
+import com.Shadersoft.UniverseMG.Commands.Chats.*;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import com.Shadersoft.UniverseMG.Banning.BanConfig;
 import com.Shadersoft.UniverseMG.Commands.*;
 import com.Shadersoft.UniverseMG.Handlers.Handlerlist;
 import com.Shadersoft.UniverseMG.Handlers.PlayerHandler;
+import com.Shadersoft.UniverseMG.Ranks.ChatType;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 
 public class UniverseMG extends JavaPlugin
@@ -26,6 +28,7 @@ public class UniverseMG extends JavaPlugin
     public List<String>                     pluginAuthors;
     public PluginDescriptionFile            info;
     public Handlerlist                      handlers;
+    public HashMap<Player, ChatType>        playerChats;
 
     public UniverseMG()
     {
@@ -49,6 +52,7 @@ public class UniverseMG extends JavaPlugin
         pluginName    = info.getFullName();
         pluginVersion = info.getVersion();
         pluginAuthors = info.getAuthors();
+        playerChats   = new HashMap();
 
         // Initialize Commands
         getCommand("universemg").setExecutor(new Command_universemg());
@@ -60,6 +64,12 @@ public class UniverseMG extends JavaPlugin
         getCommand("sban").setExecutor(new Command_sban());
         getCommand("kick").setExecutor(new Command_kick());
         getCommand("removeadmin").setExecutor(new Command_removeadmin());
+        
+        getCommand("helperchat").setExecutor(new Command_helperchat());
+        getCommand("modchat").setExecutor(new Command_modchat());
+        getCommand("adminchat").setExecutor(new Command_adminchat());
+        getCommand("devchat").setExecutor(new Command_devchat());
+        getCommand("ownerchat").setExecutor(new Command_ownerchat());
 
         // Listeners / Handlers
         getServer().getPluginManager().registerEvents(new PlayerHandler(this), this);

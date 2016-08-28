@@ -4,9 +4,7 @@ import org.apache.commons.lang.StringUtils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
