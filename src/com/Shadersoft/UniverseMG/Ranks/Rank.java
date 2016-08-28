@@ -13,7 +13,7 @@ import org.bukkit.command.CommandSender;
 
 public enum Rank
 {
-    OWNER(RankType.OWNER, "Owner", 6, "Owner", ChatColor.DARK_RED),
+    OWNER(RankType.STAFF, "Owner", 6, "Owner", ChatColor.DARK_RED),
     MAINDEV(RankType.STAFF, "Main Developer", 5, "MDev", ChatColor.YELLOW),
     DEV(RankType.STAFF, "Developer", 4, "Dev", ChatColor.DARK_PURPLE),
     ADMIN(RankType.STAFF, "Admin", 3, "Admin", ChatColor.GOLD),

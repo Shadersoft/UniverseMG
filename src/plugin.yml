@@ -12,6 +12,10 @@ commands:
         description: Adds an admin.
         usage: /<command> <player> <rank>
     ban:
+    removeadmin:
+        description: Removes an admin.
+        usage: /<command> <player>
+    ban:
         description: Bans a player.
         usage: /<command> <player> <reason>
     unban:
