@@ -42,11 +42,13 @@ public class ChatHandler implements Listener
         
         if(plugin.prefixes.containsKey(player))
         {
-            ChatUtils.bCastMsg(ChatUtils.grammarize(plugin.prefixes.get(player) + ChatColor.WHITE + " <" + player.getDisplayName() + ChatColor.WHITE + "> " + event.getMessage()));
+            ChatUtils.bCastMsg(plugin.prefixes.get(player) + ChatColor.WHITE + " <" + player.getDisplayName() + ChatColor.WHITE + "> " + ChatUtils.grammarize(event.getMessage()));
+            event.setCancelled(true);
         }
         else
         {
-            ChatUtils.bCastMsg(ChatUtils.grammarize(ChatColor.WHITE + " <" + player.getDisplayName() + ChatColor.WHITE + "> " + event.getMessage()));
+            ChatUtils.bCastMsg(ChatColor.WHITE + " <" + player.getDisplayName() + ChatColor.WHITE + "> " + ChatUtils.grammarize(event.getMessage()));
+            event.setCancelled(true);
         }
     }
 }

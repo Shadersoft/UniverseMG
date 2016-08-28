@@ -42,6 +42,9 @@ commands:
         description: Turn maintenance on/off.
         usage: /<command> on|off
         aliases: closeserver
+    tag:
+        description: Set your tag.
+        usage: /<command> <tag>|clean|clear
     
     #Chats
     

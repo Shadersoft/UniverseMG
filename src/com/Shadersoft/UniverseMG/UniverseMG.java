@@ -68,6 +68,7 @@ public class UniverseMG extends JavaPlugin
         getCommand("kick").setExecutor(new Command_kick());
         getCommand("removeadmin").setExecutor(new Command_removeadmin());
         getCommand("mute").setExecutor(new Command_mute());
+        getCommand("tag").setExecutor(new Command_tag());
         
         getCommand("helperchat").setExecutor(new Command_helperchat());
         getCommand("modchat").setExecutor(new Command_modchat());
