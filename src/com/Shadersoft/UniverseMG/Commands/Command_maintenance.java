@@ -9,7 +9,7 @@ import com.Shadersoft.UniverseMG.UniverseMG;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-public class Command_maintenancemode implements UMGCommand
+public class Command_maintenance implements UMGCommand
 {
     public UniverseMG plugin = UniverseMG.plugin;
 
