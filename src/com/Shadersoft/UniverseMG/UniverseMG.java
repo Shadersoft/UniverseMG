@@ -12,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.Shadersoft.UniverseMG.Banning.BanConfig;
 import com.Shadersoft.UniverseMG.Commands.*;
+import com.Shadersoft.UniverseMG.Handlers.ChatHandler;
 import com.Shadersoft.UniverseMG.Handlers.Handlerlist;
 import com.Shadersoft.UniverseMG.Handlers.PlayerHandler;
 import com.Shadersoft.UniverseMG.Ranks.ChatType;
@@ -19,22 +20,17 @@ import java.util.ArrayList;
 
 public class UniverseMG extends JavaPlugin
 {
-    public static UniverseMG                plugin;
-    public HashMap<String, CommandExecutor> commandList = new HashMap();
-    public FileConfiguration                config;
-    public BanConfig                        banconfig;
-    public String                           pluginName;
-    public String                           pluginVersion;
-    public List<String>                     pluginAuthors;
-    public PluginDescriptionFile            info;
-    public Handlerlist                      handlers;
-    public HashMap<Player, ChatType>        playerChats;
-    public List<Player>                     muted;
-
-    public UniverseMG()
-    {
-        this.banconfig = new BanConfig(this);
-    }
+    public static UniverseMG                               plugin;
+    public HashMap<String, CommandExecutor>                commandList;
+    public FileConfiguration                               config;
+    public BanConfig                                       banconfig;
+    public String                                          pluginName;
+    public String                                          pluginVersion;
+    public List<String>                                    pluginAuthors;
+    public PluginDescriptionFile                           info;
+    public Handlerlist                                     handlers;
+    public HashMap<Player, ChatType>                       playerChats;
+    public List<Player>                                    muted;
 
     @Override
     public void onDisable()
@@ -46,6 +42,9 @@ public class UniverseMG extends JavaPlugin
     public void onEnable()
     {
         // Initialize Variables
+        
+        commandList = new HashMap();
+        banconfig = new BanConfig(this);
         handlers      = new Handlerlist();
         plugin        = this;
         config        = getConfig();
@@ -76,6 +75,7 @@ public class UniverseMG extends JavaPlugin
 
         // Listeners / Handlers
         getServer().getPluginManager().registerEvents(new PlayerHandler(this), this);
+        getServer().getPluginManager().registerEvents(new ChatHandler(this), this);
 
         // Create config
         this.saveDefaultConfig();

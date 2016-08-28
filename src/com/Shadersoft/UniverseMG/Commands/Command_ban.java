@@ -18,16 +18,16 @@ public class Command_ban implements UMGCommand
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
     {
-        if(args.length == 0)
-        {
-            sender.sendMessage(Messages.MOD_TAG + "Usage: /ban <player> <reason>");
-            return true;
-        }
-
         if(Rank.getSenderRank(sender).getPriority() < this.getRank().getPriority())
         {
             sender.sendMessage(Messages.MSG_NO_PERMS);
 
+            return true;
+        }
+        
+        if(args.length == 0)
+        {
+            sender.sendMessage(Messages.MOD_TAG + "Usage: /ban <player> <reason>");
             return true;
         }
         
@@ -45,10 +45,10 @@ public class Command_ban implements UMGCommand
 
             if(target != null)
             {
-                String reason = "You're account has been suspended from UniverseMG";
+                String reason = "Your account has been suspended from UniverseMG";
 
                 target.kickPlayer(Messages.MOD_TAG + sender.getName() + " has banned you " + reason
-                                  + " appeal @   " + plugin.config.getBoolean("forums"));
+                                  + " appeal at " + plugin.config.getString("forums"));
                 target.setBanned(true);
                 sender.sendMessage(Messages.MOD_TAG + "BANNED " + ChatColor.DARK_RED + target.getName());
 
@@ -63,7 +63,7 @@ public class Command_ban implements UMGCommand
             }
             else
             {
-                String reason = "You're account have been suspended from UniverseMG";
+                String reason = "Your account have been suspended from UniverseMG";
 
                 offlineTarget.setBanned(true);
                 sender.sendMessage(Messages.MOD_TAG + "BANNED " + ChatColor.DARK_RED + offlineTarget.getName());
@@ -71,7 +71,7 @@ public class Command_ban implements UMGCommand
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
                     p.sendMessage(Messages.STAFF + sender.getName() + " BANNED " + offlineTarget.getName()
-                                  + " from UniverseMG for  " + reason);
+                                  + " from UniverseMG for " + reason);
                 }
 
                 this.plugin.banconfig.getConfig().set(offlineTarget.getName().toLowerCase(), reason);

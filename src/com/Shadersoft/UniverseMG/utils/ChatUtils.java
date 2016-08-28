@@ -52,7 +52,7 @@ public class ChatUtils
                 {
                     if(Rank.getRankFromName(player.getName()).getPriority() == Rank.HELPER.getPriority())
                     {
-                        sender.sendMessage(colorize("&e[&bHELPER&e] " + grammarize(string)));
+                        sender.sendMessage(colorize("&e[&bHELPER&e] &5" + sender.getName() + ": " + grammarize(string)));
                         return;
                     }
                 }
@@ -68,7 +68,7 @@ public class ChatUtils
                 {
                     if(Rank.getRankFromName(player.getName()).getPriority() == Rank.MOD.getPriority())
                     {
-                        sender.sendMessage(colorize("&e[&aMODERATOR&e] " + grammarize(string)));
+                        sender.sendMessage(colorize("&e[&aMODERATOR&e] &a" + sender.getName() + ": " + grammarize(string)));
                         return;
                     }
                 }
@@ -84,7 +84,7 @@ public class ChatUtils
                 {
                     if(Rank.getRankFromName(player.getName()).getPriority() >= Rank.ADMIN.getPriority())
                     {
-                        sender.sendMessage(colorize("&e[&6ADMIN&e] " + grammarize(string)));
+                        sender.sendMessage(colorize("&e[&6ADMIN&e] &6" + sender.getName() + ": " + grammarize(string)));
                         return;
                     }
                 }
@@ -100,7 +100,7 @@ public class ChatUtils
                 {
                     if(Rank.getRankFromName(player.getName()).getPriority() == Rank.DEV.getPriority() || Rank.getRankFromName(player.getName()).getPriority() == Rank.MAINDEV.getPriority())
                     {
-                        sender.sendMessage(colorize("&e[&5DEV&e] " + grammarize(string)));
+                        sender.sendMessage(colorize("&e[&5DEV&e] &5" + sender.getName() + ": " + grammarize(string)));
                         return;
                     }
                 }
@@ -116,7 +116,7 @@ public class ChatUtils
                 {
                     if(Rank.getRankFromName(player.getName()).getPriority() == Rank.OWNER.getPriority())
                     {
-                        sender.sendMessage(colorize("&e[&4OWNER&e] " + grammarize(string)));
+                        sender.sendMessage(colorize("&e[&4OWNER&e] &4" + sender.getName() + ": " + grammarize(string)));
                         return;
                     }
                 }
