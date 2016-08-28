@@ -30,7 +30,7 @@ public class Command_tag implements UMGCommand
             return true;
         }
         
-        if(args.length != 1)
+        if(args.length < 1)
         {
             return false;
         }
@@ -41,16 +41,18 @@ public class Command_tag implements UMGCommand
             for(Player tagPlr : plugin.prefixes.keySet())
             {
                 String newTag = plugin.prefixes.get(tagPlr).replace('§','&').replace("&0", "").replace("&k", "").replace("&o", "").replace("&m", "").replace("&n", "");
-                plugin.prefixes.put(tagPlr, newTag);
+                plugin.prefixes.put(tagPlr, ChatUtils.colorize(newTag));
             }
         }
         else if(args[0].equalsIgnoreCase("clear"))
         {
+             ChatUtils.bCastMsg(Messages.MOD_TAG + sender.getName() + " cleared all tags.");
             plugin.prefixes.clear();
         }
         else
         {
             plugin.prefixes.put((Player)sender, ChatUtils.colorize(StringUtils.join(args, " ")));
+            sender.sendMessage(ChatColor.RED + "Your tag has been set to: " + plugin.prefixes.get((Player)sender));
         }
         
         return true;
