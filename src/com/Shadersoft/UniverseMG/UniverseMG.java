@@ -17,6 +17,8 @@ import com.Shadersoft.UniverseMG.Handlers.Handlerlist;
 import com.Shadersoft.UniverseMG.Handlers.PlayerHandler;
 import com.Shadersoft.UniverseMG.Ranks.ChatType;
 import java.util.ArrayList;
+import me.SorryIm2Fresh.Cutclean.Listeners.BlockListener;
+import org.bukkit.Bukkit;
 
 public class UniverseMG extends JavaPlugin
 {
@@ -66,7 +68,7 @@ public class UniverseMG extends JavaPlugin
         getCommand("kick").setExecutor(new Command_kick());
         getCommand("removeadmin").setExecutor(new Command_removeadmin());
         getCommand("mute").setExecutor(new Command_mute());
-        
+        //  Chat Commands
         getCommand("helperchat").setExecutor(new Command_helperchat());
         getCommand("modchat").setExecutor(new Command_modchat());
         getCommand("adminchat").setExecutor(new Command_adminchat());
@@ -76,6 +78,7 @@ public class UniverseMG extends JavaPlugin
         // Listeners / Handlers
         getServer().getPluginManager().registerEvents(new PlayerHandler(this), this);
         getServer().getPluginManager().registerEvents(new ChatHandler(this), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new BlockListener(), this);
 
         // Create config
         this.saveDefaultConfig();
