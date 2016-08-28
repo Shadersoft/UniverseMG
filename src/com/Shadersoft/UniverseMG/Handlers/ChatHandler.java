@@ -32,16 +32,16 @@ public class ChatHandler implements Listener
             String prefix = null;
             switch(Rank.getSenderRank((CommandSender)player))
             {
-                case HELPER: prefix = ChatColor.DARK_GRAY + "[" + Rank.HELPER.getDisplayTag() + ChatColor.GRAY + "]";
-                case MOD: prefix = ChatColor.DARK_GRAY + "[" + Rank.MOD.getDisplayTag() + ChatColor.GRAY + "]";
-                case ADMIN: prefix = ChatColor.DARK_GRAY + "[" + Rank.ADMIN.getDisplayTag() + ChatColor.GRAY + "]";
-                case DEV: prefix = ChatColor.DARK_GRAY + "[" + Rank.DEV.getDisplayTag() + ChatColor.GRAY + "]";
-                case MAINDEV: prefix = ChatColor.DARK_GRAY + "[" + Rank.MAINDEV.getDisplayTag() + ChatColor.GRAY + "]";
-                case OWNER: prefix = ChatColor.DARK_GRAY + "[" + Rank.OWNER.getDisplayTag() + ChatColor.GRAY + "]";
+                case HELPER: prefix = ChatColor.DARK_GRAY + "[" + Rank.HELPER.getDisplayTag() + ChatColor.DARK_GRAY + "]";
+                case MOD: prefix = ChatColor.DARK_GRAY + "[" + Rank.MOD.getDisplayTag() + ChatColor.DARK_GRAY + "]";
+                case ADMIN: prefix = ChatColor.DARK_GRAY + "[" + Rank.ADMIN.getDisplayTag() + ChatColor.DARK_GRAY + "]";
+                case DEV: prefix = ChatColor.DARK_GRAY + "[" + Rank.DEV.getDisplayTag() + ChatColor.DARK_GRAY + "]";
+                case MAINDEV: prefix = ChatColor.DARK_GRAY + "[" + Rank.MAINDEV.getDisplayTag() + ChatColor.DARK_GRAY + "]";
+                case OWNER: prefix = ChatColor.DARK_GRAY + "[" + Rank.OWNER.getDisplayTag() + ChatColor.DARK_GRAY + "]";
             }
             if(!player.getDisplayName().startsWith(prefix))
             {
-                String oldName = player.getDisplayName();
+                String oldName = player.getDisplayName().replace(prefix, "");
                 String newName = prefix + " " + oldName;
                 
                 player.setDisplayName(newName);
