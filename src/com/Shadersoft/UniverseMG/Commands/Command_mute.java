@@ -30,7 +30,7 @@ public class Command_mute implements UMGCommand
         {
             if(!plugin.muted.contains(getPlr))
             {
-                ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " - Muting " + getPlr.getName());
+                ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " is muting " + getPlr.getName());
                 plugin.muted.add(getPlr);
                 return true;
             }
@@ -54,14 +54,14 @@ public class Command_mute implements UMGCommand
                         sender.sendMessage(ChatColor.RED + "Player is not muted.");
                         return true;
                     }
-                    ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " - Unmuting " + getPlr.getName());
+                    ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " is un-muting " + getPlr.getName());
                     plugin.muted.remove(getPlr);
                     return true;
                 }
                 case "PURGE":
                 {
                     if(args.length != 1) {return true;}
-                    ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " - Purging all muted players.");
+                    ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " is un-muting all players. .");
                     for(Player p : Bukkit.getOnlinePlayers())
                     {
                         plugin.muted.remove(getPlr);
