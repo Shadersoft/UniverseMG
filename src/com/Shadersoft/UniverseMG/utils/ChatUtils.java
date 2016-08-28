@@ -29,7 +29,7 @@ public class ChatUtils
             return string;
         }
         
-        if(string.endsWith("."))
+        if(string.endsWith(".")||string.endsWith("!")||string.endsWith("?"))
         {
             return string.substring(0, 1).toUpperCase() + string.substring(1);
         }
@@ -52,7 +52,7 @@ public class ChatUtils
                 {
                     if(Rank.getRankFromName(player.getName()).getPriority() == Rank.HELPER.getPriority())
                     {
-                        sender.sendMessage(colorize("&e[&bHELPER&e] &5" + sender.getName() + ": " + grammarize(string)));
+                        sender.sendMessage(colorize("&e[&bHELPER&e] &5" + sender.getName() + ": " + (string)));
                         return;
                     }
                 }
@@ -68,7 +68,7 @@ public class ChatUtils
                 {
                     if(Rank.getRankFromName(player.getName()).getPriority() == Rank.MOD.getPriority())
                     {
-                        sender.sendMessage(colorize("&e[&aMODERATOR&e] &a" + sender.getName() + ": " + grammarize(string)));
+                        sender.sendMessage(colorize("&e[&aMODERATOR&e] &a" + sender.getName() + ": " + (string)));
                         return;
                     }
                 }
@@ -84,7 +84,7 @@ public class ChatUtils
                 {
                     if(Rank.getRankFromName(player.getName()).getPriority() >= Rank.ADMIN.getPriority())
                     {
-                        sender.sendMessage(colorize("&e[&6ADMIN&e] &6" + sender.getName() + ": " + grammarize(string)));
+                        sender.sendMessage(colorize("&e[&6ADMIN&e] &6" + sender.getName() + ": " + (string)));
                         return;
                     }
                 }
@@ -100,7 +100,7 @@ public class ChatUtils
                 {
                     if(Rank.getRankFromName(player.getName()).getPriority() == Rank.DEV.getPriority() || Rank.getRankFromName(player.getName()).getPriority() == Rank.MAINDEV.getPriority())
                     {
-                        sender.sendMessage(colorize("&e[&5DEV&e] &5" + sender.getName() + ": " + grammarize(string)));
+                        sender.sendMessage(colorize("&e[&5DEV&e] &5" + sender.getName() + ": " + (string)));
                         return;
                     }
                 }
@@ -116,7 +116,7 @@ public class ChatUtils
                 {
                     if(Rank.getRankFromName(player.getName()).getPriority() == Rank.OWNER.getPriority())
                     {
-                        sender.sendMessage(colorize("&e[&4OWNER&e] &4" + sender.getName() + ": " + grammarize(string)));
+                        sender.sendMessage(colorize("&e[&4OWNER&e] &4" + sender.getName() + ": " + (string)));
                         return;
                     }
                 }
