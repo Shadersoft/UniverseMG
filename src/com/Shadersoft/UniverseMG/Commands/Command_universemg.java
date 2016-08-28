@@ -6,13 +6,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 
-public class Command_universemg implements CommandExecutor
+public class Command_universemg implements UMGCommand
 {
     public UniverseMG plugin = UniverseMG.plugin;
 
@@ -24,14 +23,11 @@ public class Command_universemg implements CommandExecutor
             return false;
         }
 
-        if(sender instanceof Player)
+        if(Rank.getSenderRank(sender).getPriority() < this.getRank().getPriority())
         {
-            if(Rank.getRankFromName(sender.getName()).getPriority() < this.getRank().getPriority())
-            {
-                sender.sendMessage(Messages.MSG_NO_PERMS);
+            sender.sendMessage(Messages.MSG_NO_PERMS);
 
-                return true;
-            }
+            return true;
         }
 
         String[] lines = { ChatColor.RED + "This server is running " + ChatColor.YELLOW + UniverseMG.plugin.pluginName + ChatColor.RED + ".",
@@ -47,6 +43,7 @@ public class Command_universemg implements CommandExecutor
         return true;
     }
 
+    @Override
     public Rank getRank()
     {
         return Rank.PLAYER;

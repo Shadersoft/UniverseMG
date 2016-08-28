@@ -1,8 +1,14 @@
 package com.Shadersoft.UniverseMG.Handlers;
 
+import com.Shadersoft.UniverseMG.UniverseMG;
+
 public class Handlerlist
 {
-    public ConfigHandler configHandler = new ConfigHandler();
+    public PlayerHandler playerHandler;
+
+    public Handlerlist() {
+        this.playerHandler = new PlayerHandler(UniverseMG.plugin);
+    }
 }
 
 

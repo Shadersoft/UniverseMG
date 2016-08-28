@@ -15,6 +15,7 @@ public class Command_unban implements UMGCommand
 {
     private final UniverseMG plugin = UniverseMG.plugin;
 
+    @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
     {
         if(args.length == 0)
@@ -22,16 +23,15 @@ public class Command_unban implements UMGCommand
             sender.sendMessage(Messages.MOD_TAG + "Correct usage is /unban <player>");
             return true;
         }
-        if(sender instanceof Player)
+        
+        if(Rank.getSenderRank(sender).getPriority() < this.getRank().getPriority())
         {
-            if(Rank.getPlayerRank((Player) sender).getPriority() < this.getRank().getPriority())
-            {
-                sender.sendMessage(Messages.MSG_NO_PERMS);
+            sender.sendMessage(Messages.MSG_NO_PERMS);
 
-                return true;
-            }
+            return true;
         }
-        else if(args.length >= 1)
+        
+        if(args.length >= 1)
         {
             OfflinePlayer target = this.plugin.getServer().getOfflinePlayer(args[0]);
 

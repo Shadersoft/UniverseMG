@@ -1,13 +1,10 @@
 #UniveseMG Config
 
-#Gives the default CONSOLE owner privilegies
-console_is_owner: true
-
 # Link to the server forums
 forums: forumsgoeshere.boards.net
 
 #Rank config
 ranks:
-    mafrans: MAINDEV
-    sorryim2fresh: MAINDEV
-    ethanyt: OWNER
+  mafrans: MAINDEV
+  sorryim2fresh: MAINDEV
+  ethanyt: OWNER

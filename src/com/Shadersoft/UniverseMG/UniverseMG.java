@@ -19,7 +19,6 @@ public class UniverseMG extends JavaPlugin
 {
     public static UniverseMG                plugin;
     public HashMap<String, CommandExecutor> commandList = new HashMap();
-    public HashMap<Player, Rank>            adminList   = new HashMap();
     public FileConfiguration                config;
     public BanConfig                        banconfig;
     public String                           pluginName;
@@ -61,12 +60,6 @@ public class UniverseMG extends JavaPlugin
 
         // Listeners / Handlers
         getServer().getPluginManager().registerEvents(new PlayerHandler(this), this);
-
-        // Register admins
-        if(config.contains("ranks"))
-        {
-            adminList = Rank.getAdminList();
-        }
 
         // Create config
         this.saveDefaultConfig();

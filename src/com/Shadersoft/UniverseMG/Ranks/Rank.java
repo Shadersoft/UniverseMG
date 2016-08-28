@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import static org.bukkit.Bukkit.getPlayer;
 
 import com.Shadersoft.UniverseMG.UniverseMG;
+import org.bukkit.command.CommandSender;
 
 public enum Rank
 {
@@ -41,32 +42,16 @@ public enum Rank
 
     public static void addAdmin(Player admin, Rank rank)
     {
-        plugin.adminList.put(admin, rank);
-        plugin.handlers.configHandler.overrideSaveHashMap(plugin.adminList, "ranks");
+        plugin.config.set("ranks." + admin.getName(), rank.toString());
+        plugin.saveConfig();
     }
 
     public static void removeAdmin(Player admin)
     {
-        plugin.adminList.remove(admin);
-        plugin.handlers.configHandler.overrideSaveHashMap(plugin.adminList, "ranks");
+        plugin.config.set("ranks." + admin.getName(), null);
+        plugin.saveConfig();
     }
-
-    public static HashMap<Player, Rank> getAdminList()
-    {
-        HashMap<Player, Rank> al   = new HashMap();
-        Set<String>           keys = plugin.config.getConfigurationSection("ranks").getKeys(false);
-
-        for (String key : keys)
-        {
-            Player admin = getPlayer(key);
-            Rank   rank  = getRank(plugin.config.getString("ranks." + key));
-
-            al.put(admin, rank);
-        }
-
-        return al;
-    }
-
+    
     public ChatColor getColor()
     {
         return color;
@@ -87,13 +72,14 @@ public enum Rank
         return name;
     }
 
-    public static Rank getPlayerRank(Player player)
+    public static Rank getSenderRank(CommandSender player)
     {
-        if(plugin.adminList.containsKey(player))
+        if(!(player instanceof Player)) {return OWNER;}
+        
+        if(plugin.config.contains("ranks." + player.getName()))
         {
-            return plugin.adminList.get(player);
+            return getRank(plugin.config.getString("ranks." + player.getName()));
         }
-
         return PLAYER;
     }
 
@@ -106,9 +92,7 @@ public enum Rank
     {
         for (Rank rank : Rank.values())
         {
-            if(string.equalsIgnoreCase(rank.getName())
-                    || string.equalsIgnoreCase(rank.getDisplayName())
-                    || string.equalsIgnoreCase(rank.toString()))
+            if(string.equalsIgnoreCase(rank.toString()))
             {
                 return rank;
             }
@@ -119,13 +103,10 @@ public enum Rank
 
     public static Rank getRankFromName(String playerName)
     {
-        if(plugin.handlers.configHandler.getStringHashMap("ranks").containsKey(playerName))
+        if(plugin.config.contains("ranks." + playerName))
         {
-            return Rank.getRank(plugin.handlers.configHandler.getStringHashMap("ranks")
-                                                                    .get(playerName)
-                                                                    .toUpperCase());
+            return getRank(plugin.config.getString("ranks." + playerName));
         }
-
         return PLAYER;
     }
 

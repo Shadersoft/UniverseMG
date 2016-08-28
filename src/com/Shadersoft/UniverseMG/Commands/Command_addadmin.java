@@ -20,19 +20,16 @@ public class Command_addadmin implements UMGCommand
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
+        if(Rank.getSenderRank(sender).getPriority() < this.getRank().getPriority())
+        {
+            sender.sendMessage(Messages.MSG_NO_PERMS);
+
+            return true;
+        }
+        
         if(args.length != 2)
         {
             return false;
-        }
-
-        if(sender instanceof Player)
-        {
-            if(Rank.getPlayerRank((Player) sender).getPriority() < this.getRank().getPriority())
-            {
-                sender.sendMessage(Messages.MSG_NO_PERMS);
-
-                return true;
-            }
         }
 
         Player player = Bukkit.getPlayer(args[0]);
