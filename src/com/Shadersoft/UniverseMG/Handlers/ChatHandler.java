@@ -26,37 +26,27 @@ public class ChatHandler implements Listener
     public void onChat(AsyncPlayerChatEvent event)
     {
         Player player = event.getPlayer();
-
-        if(Rank.getSenderRank((CommandSender)player).getType() == RankType.STAFF)
-        {
-            String prefix = null;
-            switch(Rank.getSenderRank((CommandSender)player))
-            {
-                case HELPER: prefix = ChatColor.DARK_GRAY + "[" + Rank.HELPER.getDisplayTag() + ChatColor.DARK_GRAY + "]";
-                case MOD: prefix = ChatColor.DARK_GRAY + "[" + Rank.MOD.getDisplayTag() + ChatColor.DARK_GRAY + "]";
-                case ADMIN: prefix = ChatColor.DARK_GRAY + "[" + Rank.ADMIN.getDisplayTag() + ChatColor.DARK_GRAY + "]";
-                case DEV: prefix = ChatColor.DARK_GRAY + "[" + Rank.DEV.getDisplayTag() + ChatColor.DARK_GRAY + "]";
-                case MAINDEV: prefix = ChatColor.DARK_GRAY + "[" + Rank.MAINDEV.getDisplayTag() + ChatColor.DARK_GRAY + "]";
-                case OWNER: prefix = ChatColor.DARK_GRAY + "[" + Rank.OWNER.getDisplayTag() + ChatColor.DARK_GRAY + "]";
-            }
-            if(!player.getDisplayName().startsWith(prefix))
-            {
-                String oldName = player.getDisplayName().replace(prefix, "");
-                String newName = prefix + " " + oldName;
-                
-                player.setDisplayName(newName);
-            }
-        }
         
         if(plugin.playerChats.containsKey(player))
         {
             ChatUtils.specialChatMessage(player, event.getMessage(), plugin.playerChats.get(player));
             event.setCancelled(true);
+            return;
         }
         
         if(plugin.muted.contains(player))
         {
             event.setCancelled(true);
+            return;
+        }
+        
+        if(plugin.prefixes.containsKey(player))
+        {
+            ChatUtils.bCastMsg(ChatUtils.grammarize(plugin.prefixes.get(player) + ChatColor.WHITE + " <" + player.getDisplayName() + ChatColor.WHITE + "> " + event.getMessage()));
+        }
+        else
+        {
+            ChatUtils.bCastMsg(ChatUtils.grammarize(ChatColor.WHITE + " <" + player.getDisplayName() + ChatColor.WHITE + "> " + event.getMessage()));
         }
     }
 }
