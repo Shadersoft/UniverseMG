@@ -1,6 +1,6 @@
 name: UniverseMG
 version: 1.0
-authors: [SorryIm2Fresh, Mafrans]
+authors: [SorryIm2Fresh, Mafrans, EthanYT]
 main: com.Shadersoft.UniverseMG.UniverseMG
 
 commands:
@@ -23,3 +23,10 @@ commands:
     adminlist:
         description: Gets the admin list.
         usage: /<command> <list>
+    sban:
+        description: Ban a player without the broadcast.
+        usage: /<command> <player> <reason>
+        aliases: silentban
+    kick:
+        description: Kick a player.
+        usage: /<command> <player> <reason>
