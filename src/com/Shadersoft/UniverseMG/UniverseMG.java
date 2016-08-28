@@ -12,11 +12,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.Shadersoft.UniverseMG.Banning.BanConfig;
 import com.Shadersoft.UniverseMG.Commands.*;
-import com.Shadersoft.UniverseMG.Handlers.ChatHandler;
-import com.Shadersoft.UniverseMG.Handlers.Handlerlist;
-import com.Shadersoft.UniverseMG.Handlers.PlayerHandler;
+import com.Shadersoft.UniverseMG.Handlers.*;
 import com.Shadersoft.UniverseMG.Ranks.ChatType;
 import java.util.ArrayList;
+import org.bukkit.Bukkit;
 
 public class UniverseMG extends JavaPlugin
 {
@@ -79,6 +78,7 @@ public class UniverseMG extends JavaPlugin
         // Listeners / Handlers
         getServer().getPluginManager().registerEvents(new PlayerHandler(this), this);
         getServer().getPluginManager().registerEvents(new ChatHandler(this), this);
+        getServer().getPluginManager().registerEvents(new BlockListener(), this);
 
         // Create config
         this.saveDefaultConfig();
