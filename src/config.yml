@@ -1,9 +1,12 @@
 #UniveseMG Config
 
+# Is server in maintenance?
+maintenance_mode: false
+
 # Link to the server forums
 forums: forumsgoeshere.boards.net
 
-#Rank config
+# Rank config
 ranks:
   mafrans: MAINDEV
   sorryim2fresh: MAINDEV

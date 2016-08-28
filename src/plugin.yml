@@ -38,6 +38,10 @@ commands:
         description: Mute a player.
         usage: /<command> <player>|list|off|purge [player]
         aliases: stfu
+    maintenance:
+        description: Turn maintenance on/off.
+        usage: /<command> on|off
+        aliases: closeserver
     
     #Chats
     
