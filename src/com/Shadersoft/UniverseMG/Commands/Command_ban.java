@@ -50,7 +50,7 @@ public class Command_ban implements UMGCommand
                 target.kickPlayer(Messages.MOD_TAG + sender.getName() + " has banned you " + reason
                                   + " appeal @   " + plugin.config.getBoolean("forums"));
                 target.setBanned(true);
-                sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + target.getName());
+                sender.sendMessage(Messages.MOD_TAG + "BANNED " + ChatColor.DARK_RED + target.getName());
 
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
@@ -66,7 +66,7 @@ public class Command_ban implements UMGCommand
                 String reason = "You're account have been suspended from UniverseMG";
 
                 offlineTarget.setBanned(true);
-                sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + offlineTarget.getName());
+                sender.sendMessage(Messages.MOD_TAG + "BANNED " + ChatColor.DARK_RED + offlineTarget.getName());
 
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
