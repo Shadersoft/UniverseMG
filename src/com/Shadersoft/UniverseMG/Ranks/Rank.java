@@ -20,7 +20,7 @@ public enum Rank
     IMPOSTOR(RankType.PLAYER, "Imposter(IP)", -1, "Imp", ChatColor.ITALIC, "an");
 
     // not sure if we need imposter, server is not cracked?
-    private static UniverseMG plugin   = UniverseMG.plugin;
+    private static final UniverseMG plugin   = UniverseMG.plugin;
     
     private String     tag      = null;
     private String     name     = null;

@@ -6,6 +6,8 @@ import org.bukkit.command.CommandSender;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 public class Command_maintenancemode implements UMGCommand
 {
@@ -21,16 +23,21 @@ public class Command_maintenancemode implements UMGCommand
             return true;
         }
         
-        if(args.length != 1)
+        if(args.length < 1)
         {
             return false;
         }
+        
         switch(args[0].toUpperCase())
         {
             case "ON":
             {
                 plugin.config.set("maintenance_mode", true);
                 plugin.saveConfig();
+                for(Player p : Bukkit.getOnlinePlayers())
+                {
+                    p.kickPlayer("Server is activating Maintenance mode.");
+                }
                 return true;
             }
             case "OFF":

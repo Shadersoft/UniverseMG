@@ -24,7 +24,7 @@ public class Command_broadcast implements UMGCommand
         
         if(args.length == 0)
         {
-            sender.sendMessage(Messages.MOD_TAG + "Usage: /announce <message>");
+            sender.sendMessage(Messages.MOD_TAG + "Usage: /broadcast <message>");
             return true;
         }
         
