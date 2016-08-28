@@ -11,13 +11,13 @@ commands:
     addadmin:
         description: Adds an admin.
         usage: /<command> <player> <rank>
-    ban:
     removeadmin:
         description: Removes an admin.
         usage: /<command> <player>
     ban:
         description: Bans a player.
         usage: /<command> <player> <reason>
+        aliases: gtfo
     unban:
         description: Unbans a player.
         usage: /<command> <player>
@@ -42,6 +42,10 @@ commands:
         description: Turn maintenance on/off.
         usage: /<command> on|off
         aliases: closeserver
+    broadcast:
+        description: Broadcast a message to the server
+        usage: /<command> <message>
+        aliases: bc, announce, an
     
     #Chats
     
