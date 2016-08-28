@@ -12,28 +12,26 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 
-public class Command_kick implements CommandExecutor {
+public class Command_kick implements UMGCommand {
 
     private final UniverseMG plugin = UniverseMG.plugin;
     
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(sender instanceof Player)
+        
+        if(Rank.getSenderRank(sender).getPriority() < this.getRank().getPriority())
         {
-            if(Rank.getPlayerRank((Player) sender).getPriority() < this.getRank().getPriority())
-            {
-                sender.sendMessage(Messages.MSG_NO_PERMS);
+            sender.sendMessage(Messages.MSG_NO_PERMS);
 
-                return true;
-            }
-            
-            if(Rank.getRankFromName(args[0]).getPriority()
-                > Rank.getRankFromName(sender.getName()).getPriority())
-            {
-                sender.sendMessage(Messages.MSG_NO_PERMS);
+            return true;
+        }
+        
+        if(Rank.getRankFromName(args[0]).getPriority()
+            > Rank.getRankFromName(sender.getName()).getPriority())
+        {
+            sender.sendMessage(Messages.MSG_NO_PERMS);
 
-                return true;
-            }
+            return true;
         }
     	
         if (args.length == 0)
@@ -74,6 +72,7 @@ public class Command_kick implements CommandExecutor {
         return true;
     }
     
+    @Override
     public Rank getRank()
     {
         return Rank.ADMIN;

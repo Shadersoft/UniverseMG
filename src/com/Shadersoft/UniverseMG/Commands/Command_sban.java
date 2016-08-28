@@ -18,29 +18,27 @@ public class Command_sban implements UMGCommand
 
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
     {
+        if(Rank.getSenderRank(sender).getPriority() < this.getRank().getPriority())
+        {
+            sender.sendMessage(Messages.MSG_NO_PERMS);
+
+            return true;
+        }
+        
         if(args.length == 0)
         {
             sender.sendMessage(Messages.MOD_TAG + "Usage: /sban <player> <reason>");
             return true;
         }
-
-        if(sender instanceof Player)
-        {
-            if(Rank.getPlayerRank((Player) sender).getPriority() < this.getRank().getPriority())
-            {
-                sender.sendMessage(Messages.MSG_NO_PERMS);
-
-                return true;
-            }
             
-            if(Rank.getRankFromName(args[0]).getPriority()
-                > Rank.getRankFromName(sender.getName()).getPriority())
-            {
-                sender.sendMessage(Messages.MSG_NO_PERMS);
+        if(Rank.getRankFromName(args[0]).getPriority()
+            > Rank.getRankFromName(sender.getName()).getPriority())
+        {
+            sender.sendMessage(Messages.MSG_NO_PERMS);
 
-                return true;
-            }
+            return true;
         }
+       
         else if(args.length == 1)
         {
             Player        target        = this.plugin.getServer().getPlayer(args[0]);
@@ -60,7 +58,7 @@ public class Command_sban implements UMGCommand
             }
             else
             {
-                String reason = "You're account have been suspended from UniverseMG";
+                String reason = "Your account has been suspended from UniverseMG";
 
                 offlineTarget.setBanned(true);
                 sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + offlineTarget.getName());
@@ -83,7 +81,7 @@ public class Command_sban implements UMGCommand
                     reason = reason + args[i] + " ";
                 }
 
-                target.kickPlayer("Your account has been suspended from UniverseMG \nReason: �c" + reason);
+                target.kickPlayer("Your account has been suspended from UniverseMG \nReason: " + ChatColor.RED + reason);
                 target.setBanned(true);
                 
                 sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + target.getName());
