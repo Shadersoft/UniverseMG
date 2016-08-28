@@ -11,6 +11,7 @@ import com.Shadersoft.UniverseMG.Ranks.ChatType;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class Command_helperchat implements UMGCommand
@@ -39,10 +40,12 @@ public class Command_helperchat implements UMGCommand
             if(plugin.playerChats.containsKey((Player)sender))
             {
                 plugin.playerChats.put((Player)sender, ChatType.HELPER);
+                sender.sendMessage(ChatColor.RED + "Toggled helperchat ON");
             }
             else
             {
                 plugin.playerChats.remove((Player)sender);
+                sender.sendMessage(ChatColor.RED + "Toggled helperchat OFF");
             }
             
             return true;

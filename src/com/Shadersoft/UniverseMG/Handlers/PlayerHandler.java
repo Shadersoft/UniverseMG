@@ -9,6 +9,10 @@ import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.Ranks.RankType;
 import com.Shadersoft.UniverseMG.UniverseMG;
+import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerHandler implements Listener
 {
@@ -20,7 +24,7 @@ public class PlayerHandler implements Listener
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onJoin(AsyncPlayerPreLoginEvent event)
+    public void onPreJoin(AsyncPlayerPreLoginEvent event)
     {
         String player = event.getName().toLowerCase();
 
@@ -37,6 +41,18 @@ public class PlayerHandler implements Listener
             {
                 event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, Messages.MOD_TAG + "Server is currently in maintenance, only staff may join.");
             }
+        }
+    }
+    
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onJoin(PlayerJoinEvent event)
+    {
+        Player player = event.getPlayer();
+        Rank playerRank = Rank.getSenderRank((CommandSender)player);
+        
+        if(playerRank.getType() == RankType.STAFF)
+        {
+            event.setJoinMessage(playerRank.getDisplayTag() + " " + playerRank.getColor() + player.getName() + ChatColor.YELLOW + " joined the game");
         }
     }
 }
