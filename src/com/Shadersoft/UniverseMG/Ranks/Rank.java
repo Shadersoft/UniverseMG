@@ -14,7 +14,7 @@ public enum Rank
     MAINDEV(RankType.STAFF, "Main Developer", 5, "Main Dev", ChatColor.YELLOW, "the"),
     DEV(RankType.STAFF, "Developer", 4, "Dev", ChatColor.DARK_PURPLE, "a"),
     ADMIN(RankType.STAFF, "Admin", 3, "Admin", ChatColor.GOLD, "an"),
-    MOD(RankType.STAFF, "Moderator", 2, "Mod", ChatColor.GREEN, "a"),
+    MODERATOR(RankType.STAFF, "Moderator", 2, "Mod", ChatColor.GREEN, "a"),
     HELPER(RankType.STAFF, "Helper", 1, "Helper", ChatColor.AQUA, "a"),
     PLAYER(RankType.PLAYER, "Player", 0, null, ChatColor.WHITE, "a"),
     IMPOSTOR(RankType.PLAYER, "Imposter(IP)", -1, "Imp", ChatColor.ITALIC, "an");

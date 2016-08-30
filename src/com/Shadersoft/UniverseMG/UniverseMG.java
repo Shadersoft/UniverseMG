@@ -78,6 +78,7 @@ public class UniverseMG extends JavaPlugin
         getCommand("ownerchat").setExecutor(new Command_ownerchat());
 
         // Listeners / Handlers
+        getServer().getPluginManager().registerEvents(new CommandHandler(this), this);
         getServer().getPluginManager().registerEvents(new PlayerHandler(this), this);
         getServer().getPluginManager().registerEvents(new ChatHandler(this), this);
         getServer().getPluginManager().registerEvents(new BlockListener(), this);

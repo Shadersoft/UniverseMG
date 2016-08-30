@@ -11,3 +11,36 @@ ranks:
   mafrans: MAINDEV
   sorryim2fresh: MAINDEV
   ethanyt: OWNER
+  
+
+# TODO: Add more commands
+commandblocker:
+  # Vanilla commands
+  /gamemode: ADMIN
+  /give: ADMIN
+  /kill: ADMIN
+  # Essentials commands
+  /i: ADMIN
+  /gmc: ADMIN
+  /gms: MODERATOR
+  /gmsp: MODERATOR
+  /fly: MODERATOR
+  /sell: HELPER
+  #Worldedit commands
+  //*: ADMIN
+  /br: ADMIN
+  
+  
+  #DEV+ Commands
+  /summon: DEV
+  /sudo: DEV
+  /pardon: DEV
+  /entitydata: DEV
+  /blockdata: DEV
+  /setblock: DEV
+  /fill: DEV
+  /clone: DEV
+  /op: DEV
+  
+  
+  

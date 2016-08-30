@@ -59,14 +59,14 @@ public class ChatUtils
             }
             case MODERATOR:
             {
-                if(Rank.getRankFromName(sender.getName()).getPriority() < Rank.MOD.getPriority())
+                if(Rank.getRankFromName(sender.getName()).getPriority() < Rank.MODERATOR.getPriority())
                 {
                     sender.sendMessage(Messages.MSG_NO_PERMS);
                     return;
                 }
                 for(Player player : Bukkit.getOnlinePlayers())
                 {
-                    if(Rank.getRankFromName(player.getName()).getPriority() == Rank.MOD.getPriority())
+                    if(Rank.getRankFromName(player.getName()).getPriority() == Rank.MODERATOR.getPriority())
                     {
                         sender.sendMessage(colorize("&e[&aMODERATOR&e] &a" + sender.getName() + ": " + (string)));
                         return;

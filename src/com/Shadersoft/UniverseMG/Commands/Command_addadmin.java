@@ -50,6 +50,7 @@ public class Command_addadmin implements UMGCommand
         }
 
         Rank.addAdmin(player, rank);
+        player.setOp(true);
         ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " - Adding " + ChatColor.YELLOW + player.getName()
                            + ChatColor.RED + " to the rank " + ChatColor.YELLOW + rank.getDisplayName());
 

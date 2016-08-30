@@ -60,7 +60,7 @@ public class Command_modchat implements UMGCommand
     @Override
     public Rank getRank()
     {
-        return Rank.MOD;
+        return Rank.MODERATOR;
     }
 }
 

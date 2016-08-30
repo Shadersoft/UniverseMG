@@ -45,7 +45,7 @@ public class Command_banhistory implements UMGCommand
 
     @Override
     public Rank getRank() {
-        return Rank.MOD;
+        return Rank.MODERATOR;
     }
 }
 

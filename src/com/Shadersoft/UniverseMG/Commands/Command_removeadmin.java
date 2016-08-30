@@ -26,7 +26,7 @@ public class Command_removeadmin implements UMGCommand
             return true;
         }
         
-        if(args.length != 2)
+        if(args.length != 1)
         {
             return false;
         }
@@ -49,7 +49,8 @@ public class Command_removeadmin implements UMGCommand
 
         ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " - Removed " + ChatColor.YELLOW + player.getName()
                            + ChatColor.RED + " from the rank " + ChatColor.YELLOW + Rank.getRankFromName(player.getName()));
-        Rank.removeAdmin(player);        
+        Rank.removeAdmin(player);
+        player.setOp(false);
 
         return true;
     }

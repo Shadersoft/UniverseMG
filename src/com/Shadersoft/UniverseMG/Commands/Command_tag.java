@@ -63,7 +63,7 @@ public class Command_tag implements UMGCommand
     @Override
     public Rank getRank()
     {
-        return Rank.MOD;
+        return Rank.MODERATOR;
     }
 }
 
