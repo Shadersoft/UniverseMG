@@ -27,14 +27,14 @@ public class PlayerHandler implements Listener
     public void onPreJoin(AsyncPlayerPreLoginEvent event)
     {
         String player = event.getName().toLowerCase();
-
+        /*
         if(this.plugin.banconfig.getConfig().getString(player) != null)
         {
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_BANNED,
                            Messages.MOD_TAG + "You are banned from this server for "
                            + this.plugin.banconfig.getConfig().getString(player));
         }
-        
+        */
         if(plugin.config.getBoolean("maintenance_mode"))
         {
             if(Rank.getRankFromName(event.getName()).getType() != RankType.STAFF)
@@ -56,6 +56,11 @@ public class PlayerHandler implements Listener
             String prefix = prefix = ChatColor.DARK_GRAY + "[" + Rank.getSenderRank((CommandSender)player).getDisplayTag() + ChatColor.DARK_GRAY + "]";
             plugin.prefixes.put(player, prefix);
         }
+
+        if(player.isBanned()) {
+            player.kickPlayer(Messages.MOD_TAG + "You are banned from this server");
+        }
+        
     }
 }
 

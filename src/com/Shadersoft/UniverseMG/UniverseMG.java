@@ -80,6 +80,7 @@ public class UniverseMG extends JavaPlugin
         // Listeners / Handlers
         getServer().getPluginManager().registerEvents(new PlayerHandler(this), this);
         getServer().getPluginManager().registerEvents(new ChatHandler(this), this);
+        getServer().getPluginManager().registerEvents(new ServerListener(this), this);        
         getServer().getPluginManager().registerEvents(new BlockListener(), this);
 
         // Create config
