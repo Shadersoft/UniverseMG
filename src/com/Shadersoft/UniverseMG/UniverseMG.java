@@ -81,6 +81,7 @@ public class UniverseMG extends JavaPlugin
         getServer().getPluginManager().registerEvents(new CommandHandler(this), this);
         getServer().getPluginManager().registerEvents(new PlayerHandler(this), this);
         getServer().getPluginManager().registerEvents(new ChatHandler(this), this);
+        getServer().getPluginManager().registerEvents(new ServerListener(this), this);        
         getServer().getPluginManager().registerEvents(new BlockListener(), this);
 
         // Create config

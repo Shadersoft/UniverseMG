@@ -44,7 +44,7 @@ commands:
         aliases: closeserver
     tag:
         description: Set your tag.
-        usage: /<command> <tag>|clean|clear
+        usage: /<command> <tag>|clean|clear>
     broadcast:
         description: Broadcast a message to the server
         usage: /<command> <message>

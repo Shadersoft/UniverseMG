@@ -51,6 +51,7 @@ public class Command_ban implements UMGCommand
                                   + " appeal at " + plugin.config.getString("forums"));
                 target.setBanned(true);
                 sender.sendMessage(Messages.MOD_TAG + "BANNED " + ChatColor.DARK_RED + target.getName());
+                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "minecraft:ban " + target.getName() + " " + reason);
 
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
@@ -66,6 +67,7 @@ public class Command_ban implements UMGCommand
                 String reason = "Your account have been suspended from UniverseMG";
 
                 offlineTarget.setBanned(true);
+                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "minecraft:ban " + offlineTarget.getName() + " " + reason);
                 sender.sendMessage(Messages.MOD_TAG + "BANNED " + ChatColor.DARK_RED + offlineTarget.getName());
 
                 for (Player p : Bukkit.getOnlinePlayers())
@@ -94,7 +96,7 @@ public class Command_ban implements UMGCommand
 
                 target.kickPlayer("Your account has been suspended from UniverseMG \nReason: " + reason);
                 target.setBanned(true);
-                
+                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "minecraft:ban " + target.getName() + " " + reason);
                 sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + target.getName());
 
                 for (Player p : Bukkit.getOnlinePlayers())
@@ -116,7 +118,7 @@ public class Command_ban implements UMGCommand
                 }
 
                 offlineTarget.setBanned(true);
-
+                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "minecraft:ban " + offlineTarget.getName() + " " + reason);
                 sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + offlineTarget.getName());
                 
                 for (Player p : Bukkit.getOnlinePlayers())

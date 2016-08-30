@@ -17,20 +17,7 @@ import org.bukkit.inventory.ItemStack;
 public class BlockListener
   implements Listener
 {
-  private void blockCrack(Player player, Location loc, Material type)
-  {
-    Player[] arrayOfPlayer;
-    int j = (arrayOfPlayer = (Player[])Bukkit.getServer().getOnlinePlayers().toArray()).length;
-    for (int i = 0; i < j; i++)
-    {
-      Player online = arrayOfPlayer[i];
-      if ((online.getLocation().distance(player.getLocation()) <= 15.0D) && 
-        (online != player)) {
-        online.playEffect(loc, Effect.STEP_SOUND, type.getId());
-      }
-    }
-  }
-  
+ 
   @EventHandler
   public void onEntityDeath(EntityDeathEvent event)
   {
@@ -65,7 +52,6 @@ public class BlockListener
     if (block.getType() == Material.IRON_ORE)
     {
       event.setCancelled(true);
-      blockCrack(event.getPlayer(), block.getLocation(), block.getType());
       block.setType(Material.AIR);
       block.getState().update();
       block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.IRON_INGOT));
@@ -73,7 +59,6 @@ public class BlockListener
     if (block.getType() == Material.GOLD_ORE)
     {
       event.setCancelled(true);
-      blockCrack(event.getPlayer(), block.getLocation(), block.getType());
       block.setType(Material.AIR);
       block.getState().update();
       block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.GOLD_INGOT));
@@ -81,7 +66,6 @@ public class BlockListener
     if (block.getType() == Material.GRAVEL)
     {
       event.setCancelled(true);
-      blockCrack(event.getPlayer(), block.getLocation(), block.getType());
       block.setType(Material.AIR);
       block.getState().update();
       block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.FLINT));
@@ -89,7 +73,6 @@ public class BlockListener
     if (block.getType() == Material.LEAVES)
     {
       event.setCancelled(true);
-      blockCrack(event.getPlayer(), block.getLocation(), block.getType());
       block.setType(Material.AIR);
       block.getState().update();
       block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.APPLE));
@@ -97,7 +80,6 @@ public class BlockListener
     if (block.getType() == Material.DIAMOND_ORE)
     {
       event.setCancelled(true);
-      blockCrack(event.getPlayer(), block.getLocation(), block.getType());
       block.setType(Material.AIR);
       block.getState().update();
       block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.DIAMOND));
