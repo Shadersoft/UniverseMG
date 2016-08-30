@@ -6,6 +6,8 @@ import org.bukkit.entity.Player;
 
 
 import com.Shadersoft.UniverseMG.UniverseMG;
+import java.util.HashMap;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
 public enum Rank
@@ -122,6 +124,19 @@ public enum Rank
     public String getStringPrefix()
     {
         return stringPrefix;
+    }
+    
+    public static HashMap<Player, Rank> getOnlineStaff()
+    {
+        HashMap<Player, Rank> onlineStaff = new HashMap();
+        for(Player player : plugin.getServer().getOnlinePlayers())
+        {
+            if(getSenderRank((CommandSender)player).getType() == RankType.STAFF)
+            {
+                onlineStaff.put(player, getSenderRank((CommandSender)player));
+            }
+        }
+        return onlineStaff;
     }
 }
 
