@@ -10,9 +10,13 @@ import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.Ranks.RankType;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 
 public class PlayerHandler implements Listener
 {
@@ -23,6 +27,20 @@ public class PlayerHandler implements Listener
         this.plugin = instance;
     }
 
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onDeath(PlayerDeathEvent e)
+    {
+        Player player = e.getEntity();
+        
+        ItemStack skull = new ItemStack(Material.SKULL_ITEM);
+        skull.setDurability((short)3);
+        SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
+        skullMeta.setOwner(player.getName());
+        skull.setItemMeta(skullMeta);
+        
+        player.getWorld().dropItemNaturally(player.getLocation(), skull);
+    }
+    
     @EventHandler(priority = EventPriority.MONITOR)
     public void onPreJoin(AsyncPlayerPreLoginEvent event)
     {
