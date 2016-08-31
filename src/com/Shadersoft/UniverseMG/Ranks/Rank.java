@@ -7,12 +7,12 @@ import org.bukkit.entity.Player;
 
 import com.Shadersoft.UniverseMG.UniverseMG;
 import java.util.HashMap;
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
 public enum Rank
 {
     OWNER(RankType.STAFF, "Owner", 6, "Owner", ChatColor.DARK_RED, "the"),
+    COOWNER(RankType.STAFF, "Co Owner", 6, "CoOwner", ChatColor.BLUE, "a"),
     MAINDEV(RankType.STAFF, "Main Developer", 5, "Main Dev", ChatColor.YELLOW, "the"),
     DEV(RankType.STAFF, "Developer", 4, "Dev", ChatColor.DARK_PURPLE, "a"),
     ADMIN(RankType.STAFF, "Admin", 3, "Admin", ChatColor.GOLD, "an"),
