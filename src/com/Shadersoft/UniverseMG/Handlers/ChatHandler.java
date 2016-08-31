@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
+import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -39,12 +40,12 @@ public class ChatHandler implements Listener
         
         if(plugin.prefixes.containsKey(player))
         {
-            ChatUtils.bCastMsg(plugin.prefixes.get(player) + ChatColor.WHITE + " <" + player.getDisplayName() + ChatColor.WHITE + "> " + event.getMessage());
+            ChatUtils.filterCastMsg(plugin.prefixes.get(player) + ChatColor.WHITE + " <" + player.getDisplayName() + ChatColor.WHITE + "> " + event.getMessage());
             event.setCancelled(true);
         }
         else
         {
-            ChatUtils.bCastMsg(ChatColor.WHITE + " <" + player.getDisplayName() + ChatColor.WHITE + "> " + event.getMessage());
+            ChatUtils.filterCastMsg(ChatColor.WHITE + " <" + player.getDisplayName() + ChatColor.WHITE + "> " + event.getMessage());
             event.setCancelled(true);
         }
     }

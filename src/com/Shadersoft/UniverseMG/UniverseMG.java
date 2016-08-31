@@ -30,6 +30,7 @@ public class UniverseMG extends JavaPlugin
     public HashMap<Player, ChatType>                       playerChats;
     public List<Player>                                    muted;
     public HashMap<Player, String>                         prefixes;
+    public List<Player>                                    swearPlayers;
 
     @Override
     public void onDisable()
@@ -54,6 +55,7 @@ public class UniverseMG extends JavaPlugin
         playerChats   = new HashMap();
         muted         = new ArrayList();
         prefixes      = new HashMap();
+        swearPlayers = new ArrayList();
 
         // Initialize Commands
         getCommand("universemg").setExecutor(new Command_universemg());
@@ -69,6 +71,7 @@ public class UniverseMG extends JavaPlugin
         getCommand("tag").setExecutor(new Command_tag());
         getCommand("broadcast").setExecutor(new Command_broadcast());
         getCommand("maintenance").setExecutor(new Command_maintenance());
+        getCommand("filter").setExecutor(new Command_filter());
         
         //  Chat Commands        
         getCommand("helperchat").setExecutor(new Command_helperchat());

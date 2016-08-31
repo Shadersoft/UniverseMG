@@ -49,6 +49,9 @@ commands:
         description: Broadcast a message to the server
         usage: /<command> <message>
         aliases: bc, announce, an
+    filter:
+        description: Filter away some things.
+        usage: /<command> <swear>
     
     #Chats
     

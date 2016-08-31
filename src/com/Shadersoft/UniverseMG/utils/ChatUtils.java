@@ -3,17 +3,37 @@ package com.Shadersoft.UniverseMG.utils;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.ChatType;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
+import com.Shadersoft.UniverseMG.UniverseMG;
+import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class ChatUtils
 {
+    private static UniverseMG plugin = UniverseMG.plugin;
     public static void bCastMsg(String string)
     {
         for (Player p : Bukkit.getOnlinePlayers())
         {
             p.sendMessage(string);
+        }
+    }
+    
+    public static void filterCastMsg(String string)
+    {
+        for (Player p : Bukkit.getOnlinePlayers())
+        {
+            List<String> swearWords = plugin.config.getStringList("filter.swearwords");
+            String message = string;
+            if(plugin.swearPlayers.contains(p))
+            {
+                for(String word : swearWords)
+                {
+                    message = message.replace(word, "*@$%");
+                }
+            }
+            p.sendMessage(message);
         }
     }
 

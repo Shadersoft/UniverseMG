@@ -12,6 +12,16 @@ ranks:
   sorryim2fresh: MAINDEV
   ethanyt: OWNER
   
+filter:
+  swearwords:
+   - fuck
+   - shit
+   - penis
+   - dick
+   - hell
+   - vagina
+   - pussy
+
 
 # TODO: Add more commands
 commandblocker:
