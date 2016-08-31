@@ -36,9 +36,16 @@ commandblocker:
   /gmsp: MODERATOR
   /fly: MODERATOR
   /sell: HELPER
-  #Worldedit commands
+  # Worldedit commands
   //*: ADMIN
   /br: ADMIN
+  # BananaFun commands
+  /slapfish: MODERATOR
+  /instabow: HELPER
+  /bouncer: HELPER
+  /dynamite: ADMIN
+  /woolbow: ADMIN
+  /megaphone: ADMIN
   
   
   #DEV+ Commands
@@ -51,6 +58,7 @@ commandblocker:
   /fill: DEV
   /clone: DEV
   /op: DEV
+  /enderdragon: MAINDEV
   
   
   
