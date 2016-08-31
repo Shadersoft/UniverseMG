@@ -1,6 +1,5 @@
 package com.Shadersoft.UniverseMG.Commands;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -8,7 +7,6 @@ import org.bukkit.entity.Player;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
-import com.Shadersoft.UniverseMG.utils.ChatUtils;
 
 import net.md_5.bungee.api.ChatColor;
 

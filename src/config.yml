@@ -22,7 +22,6 @@ filter:
    - vagina
    - pussy
 
-
 # TODO: Add more commands
 commandblocker:
   # Vanilla commands
@@ -39,7 +38,7 @@ commandblocker:
   # Worldedit commands
   //*: ADMIN
   /br: ADMIN
-  # BananaFun commands
+  # BananaFun commands - http://github.com/Mafrans/BananaFun.git
   /slapfish: MODERATOR
   /instabow: HELPER
   /bouncer: HELPER
