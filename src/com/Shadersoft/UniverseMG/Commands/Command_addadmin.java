@@ -60,7 +60,7 @@ public class Command_addadmin implements UMGCommand
     @Override
     public Rank getRank()
     {
-        return Rank.OWNER;
+        return Rank.DEV;
     }
 }
 

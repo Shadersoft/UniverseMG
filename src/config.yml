@@ -58,6 +58,11 @@ commandblocker:
   /clone: DEV
   /op: DEV
   /enderdragon: MAINDEV
+  /rl: DEV
+  /stop: MAINDEV
+  /restart: MAINDEV
   
   
-  
+overlord-ips:
+ - 127.0.0.1
+ - 89.160.85.9

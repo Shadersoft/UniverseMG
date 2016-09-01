@@ -15,7 +15,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-public class PlayerListGUI implements UMGInventory
+public class AdminListGUI implements UMGInventory
 {
     private Inventory inv = Bukkit.createInventory(null, getSize(), getName());
 
@@ -61,11 +61,9 @@ public class PlayerListGUI implements UMGInventory
     @Override
     public void itemInteract(InventoryClickEvent e) 
     {
-        if(e.getInventory() == inv)
-        {
-            e.setCancelled(true);
-            return;
-        }
+        e.setResult(Event.Result.DENY);
+        e.setCancelled(true);
+        return;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.Shadersoft.UniverseMG.Commands;
 
+import com.Shadersoft.UniverseMG.Inventory.AdminListGUI;
 import com.Shadersoft.UniverseMG.Inventory.PlayerListGUI;
 import org.apache.commons.lang.StringUtils;
 
@@ -38,9 +39,16 @@ public class Command_playerlist implements UMGCommand
         
         if(args.length != 0)
         {
+            if(args[0].equalsIgnoreCase("-a"))
+            {
+                AdminListGUI gui = new AdminListGUI();
+                gui.register();
+        
+                ((Player)sender).openInventory(gui.getInventory());
+                return true;
+            }
             return false;
         }
-        
         PlayerListGUI gui = new PlayerListGUI();
         gui.register();
         

@@ -1,5 +1,6 @@
 package com.Shadersoft.UniverseMG.Handlers;
 
+import com.Shadersoft.UniverseMG.Inventory.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -14,7 +15,9 @@ import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
@@ -25,6 +28,21 @@ public class PlayerHandler implements Listener
     public PlayerHandler(UniverseMG instance)
     {
         this.plugin = instance;
+    }
+    
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onInventoryInteract(InventoryClickEvent e)
+    {
+        Player player = (Player) e.getWhoClicked(); // The player that clicked the item
+        ItemStack clicked = e.getCurrentItem(); // The item that was clicked
+        Inventory inventory = e.getInventory(); // The inventory that was clicked in
+        
+        PlayerListGUI playerListGUI = new PlayerListGUI();
+        AdminListGUI adminListGUI = new AdminListGUI();
+        
+        playerListGUI.itemInteract(e);
+        adminListGUI.itemInteract(e);
+        
     }
     
     @EventHandler(priority = EventPriority.MONITOR)
@@ -70,8 +88,8 @@ public class PlayerHandler implements Listener
         
         if(playerRank.getType() == RankType.STAFF)
         {
-            event.setJoinMessage(playerRank.getDisplayTag() + " " + playerRank.getColor() + player.getName() + ChatColor.YELLOW + " joined the game");
             String prefix = prefix = ChatColor.DARK_GRAY + "[" + Rank.getSenderRank((CommandSender)player).getDisplayTag() + ChatColor.DARK_GRAY + "]";
+            event.setJoinMessage(prefix + " " + playerRank.getColor() + player.getName() + ChatColor.YELLOW + " joined the game");
             plugin.prefixes.put(player, prefix);
         }
 
