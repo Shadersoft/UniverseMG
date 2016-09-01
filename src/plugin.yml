@@ -52,6 +52,9 @@ commands:
     filter:
         description: Filter away some things.
         usage: /<command> <swear>
+    playerlist:
+        description: List all players
+        usage: /<command>
     
     #Chats
     

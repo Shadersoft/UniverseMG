@@ -26,7 +26,7 @@ public class PlayerHandler implements Listener
     {
         this.plugin = instance;
     }
-
+    
     @EventHandler(priority = EventPriority.MONITOR)
     public void onDeath(PlayerDeathEvent e)
     {
