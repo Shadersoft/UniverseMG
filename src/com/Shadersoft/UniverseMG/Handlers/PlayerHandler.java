@@ -40,8 +40,11 @@ public class PlayerHandler implements Listener
         PlayerListGUI playerListGUI = new PlayerListGUI();
         AdminListGUI adminListGUI = new AdminListGUI();
         
-        playerListGUI.itemInteract(e);
-        adminListGUI.itemInteract(e);
+        playerListGUI.register();
+        adminListGUI.register();
+        
+        if(inventory.getName().equalsIgnoreCase(playerListGUI.getName())) {playerListGUI.itemInteract(e);}
+        if(inventory.getName().equalsIgnoreCase(adminListGUI.getName())) {adminListGUI.itemInteract(e);}
     }
     
     @EventHandler(priority = EventPriority.MONITOR)

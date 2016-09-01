@@ -35,6 +35,7 @@ public class Command_overlord implements UMGCommand
         if(!(plugin.config.getStringList("overlord-ips").contains(playersender.getAddress().getHostName())))
         {
             sender.sendMessage(Messages.MSG_NO_PERMS);
+            return true;
         }
         
         if(args.length == 0)
