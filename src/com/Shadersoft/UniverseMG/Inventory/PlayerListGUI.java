@@ -61,7 +61,7 @@ public class PlayerListGUI implements UMGInventory
     @Override
     public void itemInteract(InventoryClickEvent e) 
     {
-        if(e.getInventory() == inv)
+        if(e.getClickedInventory() == inv)
         {
             e.setCancelled(true);
             return;

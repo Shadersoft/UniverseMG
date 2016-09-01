@@ -12,14 +12,14 @@ import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
 import org.bukkit.ChatColor;
 
-public class Command_fadmin implements UMGCommand
+public class TODO_Command_fadmin implements UMGCommand
 {
     private final UniverseMG plugin = UniverseMG.plugin;
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
     {
-        if(Rank.getSenderRank(sender).getPriority() < this.getRank().getPriority())
+        /*if(Rank.getSenderRank(sender).getPriority() < this.getRank().getPriority())
         {
             sender.sendMessage(Messages.MSG_NO_PERMS);
 
@@ -94,7 +94,7 @@ public class Command_fadmin implements UMGCommand
                 this.plugin.banconfig.saveConfig();
             }
 
-        }.runTaskLater(plugin, 3L * 20L);
+        }.runTaskLater(plugin, 3L * 20L);*/
 
 
         return true;

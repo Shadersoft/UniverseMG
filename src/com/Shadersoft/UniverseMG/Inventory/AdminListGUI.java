@@ -61,9 +61,12 @@ public class AdminListGUI implements UMGInventory
     @Override
     public void itemInteract(InventoryClickEvent e) 
     {
-        e.setResult(Event.Result.DENY);
-        e.setCancelled(true);
-        return;
+        if(e.getClickedInventory() == inv)
+        {
+            e.setResult(Event.Result.DENY);
+            e.setCancelled(true);
+            return;
+        }
     }
 
     @Override

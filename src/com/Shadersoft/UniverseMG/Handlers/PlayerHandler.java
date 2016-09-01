@@ -42,7 +42,6 @@ public class PlayerHandler implements Listener
         
         playerListGUI.itemInteract(e);
         adminListGUI.itemInteract(e);
-        
     }
     
     @EventHandler(priority = EventPriority.MONITOR)
