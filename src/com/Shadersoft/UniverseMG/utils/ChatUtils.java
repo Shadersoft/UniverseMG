@@ -7,11 +7,33 @@ import com.Shadersoft.UniverseMG.UniverseMG;
 import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class ChatUtils
 {
     private static UniverseMG plugin = UniverseMG.plugin;
+    
+    public static void msg(Player player, String string)
+    {
+        player.sendMessage(ChatColor.RED + string);
+    }
+    public static void msg(CommandSender sender, String string)
+    {
+        sender.sendMessage(ChatColor.RED + string);
+    }
+    
+    public static void announce(Rank rankAtLeast, String string)
+    {
+        for (CommandSender p : Bukkit.getOnlinePlayers())
+        {
+            if(Rank.getSenderRank(p).getPriority() >= rankAtLeast.getPriority())
+            {
+                p.sendMessage(Messages.ANNOUNCEMENT + string);
+            }
+        }
+    }
+    
     public static void bCastMsg(String string)
     {
         for (Player p : Bukkit.getOnlinePlayers())

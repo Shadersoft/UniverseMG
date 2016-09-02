@@ -10,6 +10,7 @@ import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.Ranks.RankType;
 import com.Shadersoft.UniverseMG.UniverseMG;
+import com.Shadersoft.UniverseMG.utils.PlayerUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -95,7 +96,12 @@ public class PlayerHandler implements Listener
             plugin.prefixes.put(player, prefix);
         }
 
-        if(player.isBanned()) {
+        if(PlayerUtils.getPermbans().containsKey(player) || PlayerUtils.getPermbans().containsValue(player.getAddress().getHostName()))
+        {
+            player.kickPlayer(Messages.MOD_TAG + "You have been permanently banned from this server.\nPlease refer to " + ChatColor.BLUE + plugin.config.getString("forums") + ChatColor.GRAY + " for more information.");
+        }
+        if(player.isBanned()) 
+        {
             player.kickPlayer(Messages.MOD_TAG + "You are banned from this server");
         }
         

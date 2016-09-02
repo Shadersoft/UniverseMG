@@ -11,6 +11,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.Shadersoft.UniverseMG.Banning.BanConfig;
+import com.Shadersoft.UniverseMG.Banning.PermBanConfig;
 import com.Shadersoft.UniverseMG.Commands.*;
 import com.Shadersoft.UniverseMG.Handlers.*;
 import com.Shadersoft.UniverseMG.Ranks.ChatType;
@@ -31,7 +32,7 @@ public class UniverseMG extends JavaPlugin
     public List<Player>                                    muted;
     public HashMap<Player, String>                         prefixes;
     public List<Player>                                    swearPlayers;
-    public List<Player>                                    veinminerPlayers;
+    public PermBanConfig                                   permbanConfig;
 
     @Override
     public void onDisable()
@@ -57,7 +58,7 @@ public class UniverseMG extends JavaPlugin
         muted         = new ArrayList();
         prefixes      = new HashMap();
         swearPlayers  = new ArrayList();
-        veinminerPlayers  = new ArrayList();
+        permbanConfig = new PermBanConfig(this);
 
         // Initialize Commands
         getCommand("universemg").setExecutor(new Command_universemg());

@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
+import com.Shadersoft.UniverseMG.utils.ChatUtils;
 
 public class Command_broadcast implements UMGCommand
 {
@@ -37,7 +38,7 @@ public class Command_broadcast implements UMGCommand
         }
         
         String message = StringUtils.join(args, " ");        
-        Bukkit.broadcastMessage(Messages.ANNOUNCEMENT + message);
+        ChatUtils.announce(Rank.PLAYER, message);
   
 
         return true;
