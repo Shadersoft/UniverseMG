@@ -11,8 +11,9 @@ ranks:
   mafrans: MAINDEV
   sorryim2fresh: MAINDEV
   ethanyt: OWNER
-  
+ 
 filter:
+  # Swear words to be filtered in /filter
   swearwords:
    - fuck
    - shit
@@ -62,7 +63,12 @@ commandblocker:
   /stop: MAINDEV
   /restart: MAINDEV
   
-  
+# Server list message.
+motd:
+  line0: '&b&m&l----&r&8&m&l[---&r &r&b&lUniverse&a&lMG &r&8&m&l---]&b&m&l----'
+  line1: '&r&a%staffcount& &bStaff Online'
+
+
 overlord-ips:
  - 127.0.0.1
  - 89.160.85.9

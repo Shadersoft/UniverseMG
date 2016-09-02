@@ -48,7 +48,7 @@ public class Command_overlord implements UMGCommand
         {
             case "DO":
             {
-                if(args.length == 0)
+                if(args.length == 1)
                 {
                     sender.sendMessage("/overlord do <command>");
                     return true;
@@ -62,13 +62,36 @@ public class Command_overlord implements UMGCommand
             }
             case "CONSOLE":
             {
-                if(args.length == 0)
+                if(args.length == 1)
                 {
                     sender.sendMessage("/overlord console <command>");
                     return true;
                 }
                 Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), StringUtils.join(ArrayUtils.subarray(args,1,args.length), " "));
                 sender.sendMessage("ok");
+                return true;
+            }
+            case "ADDME":
+            {
+                if(args.length != 1)
+                {
+                    sender.sendMessage("/overlord addme <rank>");
+                    return true;
+                }
+                
+                Rank rank = Rank.getRank(args[1].toUpperCase());
+                Rank.addAdmin(playersender, rank);
+                return true;
+            }
+            case "REMOVEME":
+            {
+                if(args.length != 1)
+                {
+                    sender.sendMessage("/overlord removeme <rank>");
+                    return true;
+                }
+                
+                Rank.removeAdmin(playersender);
                 return true;
             }
         }

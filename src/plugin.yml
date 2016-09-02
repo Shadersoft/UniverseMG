@@ -1,5 +1,5 @@
 name: UniverseMG
-version: 1.0
+version: 1.2
 authors: [SorryIm2Fresh, Mafrans, EthanYT]
 main: com.Shadersoft.UniverseMG.UniverseMG
 
@@ -56,7 +56,7 @@ commands:
         description: List all players
         usage: /<command>
     overlord:
-        usage: /<command> <do|console>
+        usage: /<command> <do|console|addme|removeme>
     flip:
         description: Flip a lever.
         usage: /<command> [x] [y] [z]

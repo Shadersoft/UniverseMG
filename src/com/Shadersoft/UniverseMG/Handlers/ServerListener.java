@@ -26,27 +26,8 @@ public class ServerListener implements Listener
     {
         List<String> motdLines = new ArrayList();
         
-        motdLines.add("&r&b&m&l----&r&8&m&l[---&r &r&b&lUniverse&a&lMG &r&8&m&l---]&b&m&l----");
-        
-        String secondLine = "&r&a" + String.valueOf(Rank.getOnlineStaff().size()) + " &bStaff Online";
-        if(Rank.getOnlineStaff().size() > 0)
-        {
-            int lastPri = 0;
-            Player highestPlr = null;
-            Rank highestRank = Rank.HELPER;
-            for(Player player : Rank.getOnlineStaff().keySet())
-            {
-                if(lastPri < Rank.getSenderRank((CommandSender)player).getPriority())
-                {
-                    lastPri = Rank.getSenderRank((CommandSender)player).getPriority();
-                    highestPlr = player;
-                    highestRank = Rank.getSenderRank((CommandSender)player);
-                }
-            }
-            
-            secondLine = "&r&a" + String.valueOf(Rank.getOnlineStaff().size()) + " &bStaff Online    &f&l|   &r&bHighest Staff: " + highestRank.getColor() + highestPlr.getName();
-        }
-        motdLines.add(secondLine);
+        motdLines.add(plugin.config.getString("motd.line0"));
+        motdLines.add(plugin.config.getString("motd.line1").replace("%staffcount%", String.valueOf(Rank.getOnlineStaff().size())));
         
         e.setMotd(ChatUtils.colorize(StringUtils.join(motdLines, "\n")));
         e.setMaxPlayers(plugin.getServer().getOnlinePlayers().size() + 1);
