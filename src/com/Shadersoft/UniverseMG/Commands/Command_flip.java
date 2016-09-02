@@ -10,6 +10,7 @@ import java.util.Set;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
 import org.bukkit.material.Lever;
 
@@ -37,9 +38,17 @@ public class Command_flip implements UMGCommand
             Block block = ((Player)sender).getTargetBlock((Set<Material>)null, maxDistance);
             if(block.getType() == Material.LEVER)
             {
-                Lever lever = (Lever) block;
-                lever.setPowered(!lever.isPowered());
+                if(block.getData() < 8)
+                {
+                    block.setData((byte)(block.getData()+8),true);
+                }
+                else
+                {
+                    block.setData((byte)(block.getData()-8),true);
+                }
+                return true;
             }
+            return true;
         }
         
         Location loc = new Location(((Player)sender).getWorld(),Integer.parseInt(args[0]),Integer.parseInt(args[1]),Integer.parseInt(args[2]));
@@ -47,8 +56,15 @@ public class Command_flip implements UMGCommand
         
         if(block.getType() == Material.LEVER)
         {
-            Lever lever = (Lever) block;
-            lever.setPowered(!lever.isPowered());
+            if(block.getData() < 8)
+            {
+                block.setData((byte)(block.getData()+8),true);
+            }
+            else
+            {
+                block.setData((byte)(block.getData()-8),true);
+            }
+            return true;
         }
         
         return true;

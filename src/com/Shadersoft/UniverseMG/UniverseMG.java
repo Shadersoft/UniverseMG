@@ -36,7 +36,7 @@ public class UniverseMG extends JavaPlugin
     @Override
     public void onDisable()
     {
-        System.out.println(pluginName + " version " + pluginVersion + " has been enabled!");
+        System.out.println(pluginName + " version " + pluginVersion + " has been disabled!");
     }
 
     @Override
@@ -86,11 +86,11 @@ public class UniverseMG extends JavaPlugin
         getCommand("ownerchat").setExecutor(new Command_ownerchat());
 
         // Listeners / Handlers
-        getServer().getPluginManager().registerEvents(new CommandHandler(this), this);
-        getServer().getPluginManager().registerEvents(new PlayerHandler(this), this);
-        getServer().getPluginManager().registerEvents(new ChatHandler(this), this);
-        getServer().getPluginManager().registerEvents(new ServerListener(this), this);        
-        getServer().getPluginManager().registerEvents(new BlockListener(), this);
+        getServer().getPluginManager().registerEvents(handlers.blockHandler, this);
+        getServer().getPluginManager().registerEvents(handlers.chatHandler, this);
+        getServer().getPluginManager().registerEvents(handlers.commandHandler, this);
+        getServer().getPluginManager().registerEvents(handlers.playerHandler, this);        
+        getServer().getPluginManager().registerEvents(handlers.serverHandler, this);
 
         // Create config
         this.saveDefaultConfig();

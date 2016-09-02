@@ -1,5 +1,6 @@
 package com.Shadersoft.UniverseMG.Handlers;
 
+import java.util.Random;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
@@ -69,24 +70,36 @@ public class BlockListener implements Listener
         }
         if (block.getType() == Material.GRAVEL)
         {
-            event.setCancelled(true);
-            block.setType(Material.AIR);
-            block.getState().update();
-            block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.FLINT));
+            Random rand = new Random();
+            int i = rand.nextInt(1);
+            if(i==1)
+            {
+                event.setCancelled(true);
+                block.setType(Material.AIR);
+                block.getState().update();
+                block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.FLINT));
+            }
         }
         if (block.getType() == Material.LEAVES)
         {
-            event.setCancelled(true);
-            block.setType(Material.AIR);
-            block.getState().update();
-            block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.APPLE));
+            Random rand = new Random();
+            int i = rand.nextInt(1);
+            if(i==1)
+            {
+                event.setCancelled(true);
+                block.setType(Material.AIR);
+                block.getState().update();
+                block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.APPLE));
+            }
         }
-        if (block.getType() == Material.DIAMOND_ORE)
+        
+        //Unneeded code?
+        /*if (block.getType() == Material.DIAMOND_ORE)
         {
             event.setCancelled(true);
             block.setType(Material.AIR);
             block.getState().update();
             block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.DIAMOND));
-        }
+        }*/
     }
 }
