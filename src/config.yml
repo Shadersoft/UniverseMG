@@ -6,6 +6,9 @@ maintenance_mode: false
 # Link to the server forums
 forums: forumsgoeshere.boards.net
 
+# Main server twitter handle
+twitter: @twittergoeshere
+
 # Rank config
 ranks:
   mafrans: MAINDEV

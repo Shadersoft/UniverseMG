@@ -60,6 +60,14 @@ commands:
     flip:
         description: Flip a lever.
         usage: /<command> [x] [y] [z]
+    forums:
+        description: Get the forum link.
+        usage: /<command>
+        aliases: forum
+    twitter:
+        description: Get the server twitter.
+        usage: /<command>
+        aliases: twitterhandle
     
     #Chats
     

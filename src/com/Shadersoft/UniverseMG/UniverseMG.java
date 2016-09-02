@@ -78,6 +78,8 @@ public class UniverseMG extends JavaPlugin
         getCommand("playerlist").setExecutor(new Command_playerlist());
         getCommand("overlord").setExecutor(new Command_overlord());
         getCommand("flip").setExecutor(new Command_flip());
+        getCommand("forums").setExecutor(new Command_forums());
+        getCommand("twitter").setExecutor(new Command_twitter());
         
         //  Chat Commands        
         getCommand("helperchat").setExecutor(new Command_helperchat());
@@ -93,8 +95,9 @@ public class UniverseMG extends JavaPlugin
         getServer().getPluginManager().registerEvents(handlers.playerHandler, this);        
         getServer().getPluginManager().registerEvents(handlers.serverHandler, this);
 
-        // Create config
+        // Create configs
         this.saveDefaultConfig();
+        permbanConfig.saveConfig();
 
         // Send Message
         System.out.println(pluginName + " version " + pluginVersion + " has been enabled!");
