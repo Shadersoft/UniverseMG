@@ -2,6 +2,7 @@ package com.Shadersoft.UniverseMG.Inventory;
 
 import com.Shadersoft.UniverseMG.Inventory.*;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
+import com.Shadersoft.UniverseMG.Ranks.RankType;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import java.util.List;
 import net.md_5.bungee.api.ChatColor;
@@ -35,7 +36,8 @@ public class PlayerListGUI implements UMGInventory
             skull.setDurability((short)3);
             SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
             skullMeta.setOwner(p.getName());
-            skullMeta.setDisplayName(ChatColor.DARK_GRAY + "[" + Rank.getSenderRank((CommandSender)p).getDisplayTag() + ChatColor.DARK_GRAY + "] " + Rank.getSenderRank((CommandSender)p).getColor() + p.getName());
+            if(Rank.getSenderRank((CommandSender)p).getType() == RankType.STAFF) {skullMeta.setDisplayName(Rank.getSenderRank((CommandSender)p).getDisplayTag() + " " + Rank.getSenderRank((CommandSender)p).getColor() + p.getName());}
+            else {skullMeta.setDisplayName(Rank.getSenderRank((CommandSender)p).getColor() + p.getName());}
             skull.setItemMeta(skullMeta);
             inv.addItem(skull);
         }

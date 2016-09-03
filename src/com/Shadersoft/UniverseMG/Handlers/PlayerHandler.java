@@ -98,8 +98,8 @@ public class PlayerHandler implements Listener
         
         if(playerRank.getType() == RankType.STAFF)
         {
-            player.setPlayerListName(ChatColor.DARK_GRAY + "[" + Rank.getSenderRank((CommandSender)player).getDisplayTag() + ChatColor.DARK_GRAY + "] " + Rank.getSenderRank((CommandSender)player).getColor() + player.getName());
-            String prefix = prefix = ChatColor.DARK_GRAY + "[" + Rank.getSenderRank((CommandSender)player).getDisplayTag() + ChatColor.DARK_GRAY + "]"; 
+            player.setPlayerListName(Rank.getSenderRank((CommandSender)player).getDisplayTag() + Rank.getSenderRank((CommandSender)player).getColor() + player.getName());
+            String prefix = prefix = Rank.getSenderRank((CommandSender)player).getDisplayTag();
             event.setJoinMessage(prefix + " " + playerRank.getColor() + player.getName() + ChatColor.YELLOW + " joined the game");
             plugin.prefixes.put(player, prefix);
         }

@@ -18,7 +18,7 @@ public enum Rank
     ADMIN(RankType.STAFF, "Admin", 3, "Admin", ChatColor.GOLD, "an"),
     MODERATOR(RankType.STAFF, "Moderator", 2, "Mod", ChatColor.GREEN, "a"),
     HELPER(RankType.STAFF, "Helper", 1, "Helper", ChatColor.AQUA, "a"),
-    PLAYER(RankType.PLAYER, "Player", 0, null, ChatColor.WHITE, "a"),
+    PLAYER(RankType.PLAYER, "Player", 0, "", ChatColor.WHITE, "a"),
     IMPOSTOR(RankType.PLAYER, "Imposter(IP)", -1, "Imp", ChatColor.ITALIC, "an");
 
     // not sure if we need imposter, server is not cracked?
@@ -65,7 +65,8 @@ public enum Rank
 
     public String getDisplayTag()
     {
-        return color + tag;
+        if(tag != "") {return ChatColor.DARK_GRAY + "[" + color + tag + ChatColor.DARK_GRAY + "]";}
+        else {return "";}
     }
 
     public String getName()
