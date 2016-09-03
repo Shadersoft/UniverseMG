@@ -35,9 +35,11 @@
 
 "Redistribution" shall mean any partial or complete availability, transfer or publication of the Work from one Legal Entity to another.
 
+"Public Distribution" shall mean any partial or complete availability, transfer or publication from one Legal Entity to a large scale group of Legal entities through publically accessible means, including but not limited to file transfer, forum posts and the internet.
+
 "Aliases" shall mean any form of anonymous identifiers, including but not limited to usernames and unique user ids.
 
-"Their" shall mean a group of people who are written earlier in the same sentence. 
+"Personal Data" shall mean any type of non publically accessible data regarding a Legal Entity, including but not limited to home adresses, full names and telephone numbers.
 
 ###2. Grant of Copyright License
 
@@ -48,6 +50,8 @@ Redistributions of This Software must solely occur in Source form. Redistributio
 Neither the names of the copyright holders nor the aliases of the copyright holders may be removed from This Software's source code.
 
 Neither the names of the copyright holders nor the aliases of this software's contributors may be used to endorse or promote products derived from This Software without specific prior written permission.
+
+No Personal Data regarding the copyright holders or this software's contributors may be subject to any form of Public Distribution outside of this document.
 
 Accreditations referencing This Software's copyright holders, their aliases or this project's contributors may neither be altered or removed from source code nor withheld from reproduction in Object form whatsoever.
 
