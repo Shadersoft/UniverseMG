@@ -1,5 +1,6 @@
 package com.Shadersoft.UniverseMG.Handlers;
 
+import com.Shadersoft.UniverseMG.Coins.Coins;
 import com.Shadersoft.UniverseMG.Inventory.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -90,6 +91,8 @@ public class PlayerHandler implements Listener
     {
         Player player = event.getPlayer();
         Rank playerRank = Rank.getSenderRank((CommandSender)player);
+        
+        Coins.initPlr(player);
         
         for(Player op : plugin.getServer().getOnlinePlayers())
         {

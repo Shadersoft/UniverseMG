@@ -68,6 +68,9 @@ commands:
         description: Get the server twitter.
         usage: /<command>
         aliases: twitterhandle
+    points:
+        description: Give a player points.
+        usage: /<command> <type> <player> <amount>
     
     #Chats
     

@@ -11,6 +11,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.Shadersoft.UniverseMG.Banning.BanConfig;
+import com.Shadersoft.UniverseMG.Coins.CoinConfig;
 import com.Shadersoft.UniverseMG.Commands.*;
 import com.Shadersoft.UniverseMG.Handlers.*;
 import com.Shadersoft.UniverseMG.Ranks.ChatType;
@@ -22,6 +23,7 @@ public class UniverseMG extends JavaPlugin
     public HashMap<String, CommandExecutor>                commandList;
     public FileConfiguration                               config;
     public BanConfig                                       banconfig;
+    public CoinConfig                                       coinconfig;
     public String                                          pluginName;
     public String                                          pluginVersion;
     public List<String>                                    pluginAuthors;
@@ -44,6 +46,7 @@ public class UniverseMG extends JavaPlugin
         
         commandList   = new HashMap();
         banconfig     = new BanConfig(this);
+        coinconfig     = new CoinConfig(this);
         plugin        = this;
         config        = getConfig();
         info          = getDescription();
@@ -75,6 +78,7 @@ public class UniverseMG extends JavaPlugin
         getCommand("flip").setExecutor(new Command_flip());
         getCommand("forums").setExecutor(new Command_forums());
         getCommand("twitter").setExecutor(new Command_twitter());
+        getCommand("points").setExecutor(new Command_points());
         
         //  Chat Commands        
         getCommand("helperchat").setExecutor(new Command_helperchat());

@@ -50,7 +50,6 @@ commandblocker:
   /woolbow: ADMIN
   /megaphone: ADMIN
   
-  
   #DEV+ Commands
   /summon: DEV
   /sudo: DEV
@@ -65,6 +64,9 @@ commandblocker:
   /rl: DEV
   /stop: MAINDEV
   /restart: MAINDEV
+  
+  # Point Commands
+  /nick: COINS:50
   
 # Server list message.
 motd:

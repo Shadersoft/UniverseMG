@@ -37,7 +37,7 @@ public class PlayerListGUI implements UMGInventory
             SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
             skullMeta.setOwner(p.getName());
             if(Rank.getSenderRank((CommandSender)p).getType() == RankType.STAFF) {skullMeta.setDisplayName(Rank.getSenderRank((CommandSender)p).getDisplayTag() + " " + Rank.getSenderRank((CommandSender)p).getColor() + p.getName());}
-            else {skullMeta.setDisplayName(Rank.getSenderRank((CommandSender)p).getColor() + p.getName());}
+            else {skullMeta.setDisplayName(p.getName());}
             skull.setItemMeta(skullMeta);
             inv.addItem(skull);
         }
