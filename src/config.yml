@@ -7,7 +7,7 @@ maintenance_mode: false
 forums: forumsgoeshere.boards.net
 
 # Main server twitter handle
-twitter: @twittergoeshere
+twitter: twittergoeshere
 
 # Rank config
 ranks:
@@ -69,8 +69,14 @@ commandblocker:
 # Server list message.
 motd:
   line0: '&b&m&l----&r&8&m&l[---&r &r&b&lUniverse&a&lMG &r&8&m&l---]&b&m&l----'
-  line1: '&r&a%staffcount& &bStaff Online'
+  line1: '&r&a%staffcount% &bStaff Online'
 
+tablist:
+  header:
+   - '&b&m&l----&r&8&m&l[---&r &r&b&lUniverse&a&lMG &r&8&m&l---]&b&m&l----'
+   - '&a%playercount% &bPlayers Online'
+  footer:
+   - '&bJoin our Forum at &a%forum%'
 
 overlord-ips:
  - 127.0.0.1

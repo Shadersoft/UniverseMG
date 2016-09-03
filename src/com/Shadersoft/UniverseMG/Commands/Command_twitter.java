@@ -30,7 +30,7 @@ public class Command_twitter implements UMGCommand
             return true;
         }
 
-        String[] lines = {"Follow our twitter at " + ChatColor.YELLOW + plugin.config.getString("twitter"),"link: " + ChatColor.YELLOW + "http://twitter.com/" + plugin.config.getString("twitter").replaceFirst("@", "")};
+        String[] lines = {"Follow our twitter at " + ChatColor.YELLOW + "@" + plugin.config.getString("twitter"),"link: " + ChatColor.YELLOW + "http://twitter.com/" + plugin.config.getString("twitter").replaceFirst("@", "")};
 
         for(String line : lines)
         {

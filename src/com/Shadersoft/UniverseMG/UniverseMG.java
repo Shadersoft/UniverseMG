@@ -11,7 +11,6 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.Shadersoft.UniverseMG.Banning.BanConfig;
-import com.Shadersoft.UniverseMG.Banning.PermBanConfig;
 import com.Shadersoft.UniverseMG.Commands.*;
 import com.Shadersoft.UniverseMG.Handlers.*;
 import com.Shadersoft.UniverseMG.Ranks.ChatType;
@@ -27,12 +26,10 @@ public class UniverseMG extends JavaPlugin
     public String                                          pluginVersion;
     public List<String>                                    pluginAuthors;
     public PluginDescriptionFile                           info;
-    public Handlerlist                                     handlers;
     public HashMap<Player, ChatType>                       playerChats;
     public List<Player>                                    muted;
     public HashMap<Player, String>                         prefixes;
     public List<Player>                                    swearPlayers;
-    public PermBanConfig                                   permbanConfig;
 
     @Override
     public void onDisable()
@@ -47,7 +44,6 @@ public class UniverseMG extends JavaPlugin
         
         commandList   = new HashMap();
         banconfig     = new BanConfig(this);
-        handlers      = new Handlerlist();
         plugin        = this;
         config        = getConfig();
         info          = getDescription();
@@ -58,7 +54,6 @@ public class UniverseMG extends JavaPlugin
         muted         = new ArrayList();
         prefixes      = new HashMap();
         swearPlayers  = new ArrayList();
-        permbanConfig = new PermBanConfig(this);
 
         // Initialize Commands
         getCommand("universemg").setExecutor(new Command_universemg());
@@ -89,15 +84,14 @@ public class UniverseMG extends JavaPlugin
         getCommand("ownerchat").setExecutor(new Command_ownerchat());
 
         // Listeners / Handlers
-        getServer().getPluginManager().registerEvents(handlers.blockHandler, this);
-        getServer().getPluginManager().registerEvents(handlers.chatHandler, this);
-        getServer().getPluginManager().registerEvents(handlers.commandHandler, this);
-        getServer().getPluginManager().registerEvents(handlers.playerHandler, this);        
-        getServer().getPluginManager().registerEvents(handlers.serverHandler, this);
+        getServer().getPluginManager().registerEvents(new BlockListener(), this);
+        getServer().getPluginManager().registerEvents(new ChatHandler(this), this);
+        getServer().getPluginManager().registerEvents(new CommandHandler(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerHandler(this), this);        
+        getServer().getPluginManager().registerEvents(new ServerListener(this), this);
 
         // Create configs
         this.saveDefaultConfig();
-        permbanConfig.saveConfig();
 
         // Send Message
         System.out.println(pluginName + " version " + pluginVersion + " has been enabled!");

@@ -10,7 +10,9 @@ import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.Ranks.RankType;
 import com.Shadersoft.UniverseMG.UniverseMG;
-import com.Shadersoft.UniverseMG.utils.PlayerUtils;
+import com.Shadersoft.UniverseMG.utils.ChatUtils;
+import com.Shadersoft.UniverseMG.utils.TablistUtil;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
@@ -89,16 +91,16 @@ public class PlayerHandler implements Listener
         Player player = event.getPlayer();
         Rank playerRank = Rank.getSenderRank((CommandSender)player);
         
+        for(Player op : plugin.getServer().getOnlinePlayers())
+        {
+            TablistUtil.setForPlayer(op, ChatUtils.colorize(StringUtils.join(plugin.config.getStringList("tablist.header"),"\n").replace("%playercount%", String.valueOf(plugin.getServer().getOnlinePlayers().size()))), ChatUtils.colorize(StringUtils.join(plugin.config.getStringList("tablist.footer"),"\n").replace("%forum%", plugin.config.getString("forums"))));
+        }
+        
         if(playerRank.getType() == RankType.STAFF)
         {
-            String prefix = prefix = ChatColor.DARK_GRAY + "[" + Rank.getSenderRank((CommandSender)player).getDisplayTag() + ChatColor.DARK_GRAY + "]";
+            String prefix = prefix = ChatColor.DARK_GRAY + "[" + Rank.getSenderRank((CommandSender)player).getDisplayTag() + ChatColor.DARK_GRAY + "]"; 
             event.setJoinMessage(prefix + " " + playerRank.getColor() + player.getName() + ChatColor.YELLOW + " joined the game");
             plugin.prefixes.put(player, prefix);
-        }
-
-        if(PlayerUtils.getPermbans().containsKey(player) || PlayerUtils.getPermbans().containsValue(player.getAddress().getHostName()))
-        {
-            player.kickPlayer(Messages.MOD_TAG + "You have been permanently banned from this server.\nPlease refer to " + ChatColor.BLUE + plugin.config.getString("forums") + ChatColor.GRAY + " for more information.");
         }
         if(player.isBanned()) 
         {
