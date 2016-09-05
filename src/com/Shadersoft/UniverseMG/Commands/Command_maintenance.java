@@ -36,7 +36,7 @@ public class Command_maintenance implements UMGCommand
                 plugin.saveConfig();
                 for(Player p : Bukkit.getOnlinePlayers())
                 {
-                    p.kickPlayer("Server is activating Maintenance mode.");
+                    p.kickPlayer("The server is currently in maintenance mode. If you feel as if you should be added to the whitelist. ");
                 }
                 return true;
             }
