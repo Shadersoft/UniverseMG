@@ -45,7 +45,7 @@ public class Command_ban implements UMGCommand
 
             if(target != null)
             {
-                String reason = "Your account has been suspended from UniverseMG";
+                String reason = "You broke the server rules!";
 
                 target.kickPlayer(Messages.MOD_TAG + sender.getName() + " has banned you " + reason
                                   + " appeal at " + plugin.config.getString("forums"));
