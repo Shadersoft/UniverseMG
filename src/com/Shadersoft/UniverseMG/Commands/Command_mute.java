@@ -61,7 +61,7 @@ public class Command_mute implements UMGCommand
                 {
                     if(args.length != 1) {return true;}
                     ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " is un-muting all players. .");
-                    for(Player p : Bukkit.getOnlinePlayers())
+                    for(Player p : player.muted)
                     {
                         plugin.muted.remove(getPlr);
                     }
