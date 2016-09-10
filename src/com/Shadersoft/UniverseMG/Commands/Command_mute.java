@@ -29,7 +29,7 @@ public class Command_mute implements UMGCommand
         {
             if(!plugin.muted.contains(getPlr))
             {
-                ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " is muting " + getPlr.getName());
+                ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " muted " + getPlr.getName());
                 plugin.muted.add(getPlr);
                 return true;
             }
@@ -61,7 +61,7 @@ public class Command_mute implements UMGCommand
                 {
                     if(args.length != 1) {return true;}
                     ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " is un-muting all players. .");
-                    for(Player p : Bukkit.getOnlinePlayers())
+                    for(Player p : player.muted)
                     {
                         plugin.muted.remove(getPlr);
                     }
@@ -75,7 +75,7 @@ public class Command_mute implements UMGCommand
     @Override
     public Rank getRank()
     {
-        return Rank.PLAYER;
+        return Rank.ADMIN;
     }
 }
 
