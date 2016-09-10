@@ -6,12 +6,14 @@
 
 package com.Shadersoft.UniverseMG.utils;
 
+import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.*;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.FallingBlock;
 
 /**
  *
@@ -85,5 +87,13 @@ public class BlockUtils
         }
         
         return materials;
+    }
+    
+    public static void fall(Block block)
+    {
+        Byte blockData = 0x0;
+        block.getLocation().getWorld().spawnFallingBlock(block.getLocation(), block.getType(), blockData);
+        block.setType(Material.AIR);
+        block.getState().update();
     }
 }

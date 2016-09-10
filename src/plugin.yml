@@ -71,6 +71,10 @@ commands:
     points:
         description: Give a player points.
         usage: /<command> <type> <player> <amount>
+    vanish:
+        description: Hides the player.
+        usage: /<command> [on|off]
+        aliases: [v,admin]
     
     #Chats
     

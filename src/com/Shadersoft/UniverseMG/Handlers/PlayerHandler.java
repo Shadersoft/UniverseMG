@@ -92,6 +92,17 @@ public class PlayerHandler implements Listener
         Player player = event.getPlayer();
         Rank playerRank = Rank.getSenderRank((CommandSender)player);
         
+        if(plugin.vanishPlayers.contains(player))
+        {
+            event.setJoinMessage(null);
+            player.setPlayerListName(null);
+            player.hidePlayer(player);
+        }
+        else
+        {
+            player.showPlayer(player);
+        }
+        
         Coins.initPlr(player);
         
         for(Player op : plugin.getServer().getOnlinePlayers())

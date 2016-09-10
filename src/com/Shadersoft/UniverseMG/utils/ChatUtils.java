@@ -16,11 +16,11 @@ public class ChatUtils
     
     public static void msg(Player player, String string)
     {
-        player.sendMessage(ChatColor.RED + string);
+        player.sendMessage(colorize(ChatColor.RED + string));
     }
     public static void msg(CommandSender sender, String string)
     {
-        sender.sendMessage(ChatColor.RED + string);
+        sender.sendMessage(colorize(ChatColor.RED + string));
     }
     
     public static String capitalize(String string)
