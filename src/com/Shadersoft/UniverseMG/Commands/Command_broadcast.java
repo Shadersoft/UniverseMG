@@ -8,6 +8,8 @@ import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
+import java.util.Arrays;
+import java.util.List;
 
 public class Command_broadcast implements UMGCommand
 {
@@ -48,6 +50,24 @@ public class Command_broadcast implements UMGCommand
     public Rank getRank()
     {
         return Rank.ADMIN;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("bc","announce","an");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> <message>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Broadcasts a message to the server.";
     }
 }
 

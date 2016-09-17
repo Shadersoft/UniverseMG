@@ -10,6 +10,7 @@ import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import static org.bukkit.Bukkit.getOfflinePlayer;
 import org.bukkit.OfflinePlayer;
@@ -62,6 +63,23 @@ public class Command_adminlist implements UMGCommand
     public Rank getRank()
     {
         return Rank.PLAYER;
+    }
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> <list>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Gets the admin list.";
     }
 }
 

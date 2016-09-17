@@ -9,6 +9,8 @@ import org.bukkit.entity.Player;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
+import java.util.Arrays;
+import java.util.List;
 import net.md_5.bungee.api.ChatColor;
 
 public class Command_ban implements UMGCommand
@@ -139,6 +141,23 @@ public class Command_ban implements UMGCommand
     public Rank getRank()
     {
         return Rank.ADMIN;
+    }
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("gtfo");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> <player> <reason>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Bans a player.";
     }
 }
 

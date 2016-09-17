@@ -7,6 +7,8 @@ import org.bukkit.command.CommandSender;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import static com.Shadersoft.UniverseMG.utils.ChatUtils.msg;
+import java.util.Arrays;
+import java.util.List;
 import net.md_5.bungee.api.ChatColor;
 import static org.bukkit.Bukkit.getPlayer;
 import org.bukkit.entity.Player;
@@ -20,8 +22,17 @@ public class Command_points implements UMGCommand
     {
         if(args.length != 4)
         {
+            if(args.length == 0)
+            {
+                msg(sender, "You have " + String.valueOf(Coins.get((Player)sender)) + " coins.");
+                return true;
+            }
             return false;
         }
+        
+        
+        
+        
         
         Player player = getPlayer(args[2]);
         
@@ -73,6 +84,24 @@ public class Command_points implements UMGCommand
     public Rank getRank()
     {
         return Rank.ADMIN;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "lorem ipsum";
     }
 }
 

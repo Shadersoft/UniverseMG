@@ -2,6 +2,7 @@ name: UniverseMG
 version: 1.2
 authors: [SorryIm2Fresh, Mafrans, EthanYT]
 main: com.Shadersoft.UniverseMG.UniverseMG
+softdepend: [Aero]
 
 commands:
     universemg:
@@ -19,10 +20,10 @@ commands:
         usage: /<command> <player> <reason>
         aliases: gtfo
     unban:
-        description: Unbans a player.
+        description: Unbans a banned player.
         usage: /<command> <player>
     banhistory:
-        description: Checks a ban history of a player.
+        description: Checks the ban history of a player.
         usage: /<command> <player>
     adminlist:
         description: Gets the admin list.
@@ -40,8 +41,8 @@ commands:
         aliases: stfu
     maintenance:
         description: Turn maintenance on/off.
-        usage: /<command> on|off
-        aliases: closeserver
+        usage: /<command> <on|off>
+        aliases: [closeserver,adminmode]
     tag:
         description: Set your tag.
         usage: /<command> <tag>|clean|clear>
@@ -79,22 +80,22 @@ commands:
     #Chats
     
     helperchat:
-        description: Use the Helper chat.
-        usage: /<command> [message]
-        aliases: [hc, hchat]
+#        description: Use the Helper chat.
+#        usage: /<command> [message]
+#        aliases: [hc, hchat]
     modchat:
-        description: Use the Moderator chat.
-        usage: /<command> [message]
-        aliases: [mc, mchat]
+#        description: Use the Moderator chat.
+#        usage: /<command> [message]
+#        aliases: [mc, mchat]
     adminchat:
-        description: Use the Admin chat.
-        usage: /<command> [message]
-        aliases: [ac, achat, o]
+#        description: Use the Admin chat.
+#        usage: /<command> [message]
+#        aliases: [ac, achat, o]
     devchat:
-        description: Use the Developer chat.
-        usage: /<command> [message]
-        aliases: [dc, dchat]
+#        description: Use the Developer chat.
+#        usage: /<command> [message]
+#        aliases: [dc, dchat]
     ownerchat:
-        description: Use the Owner chat.
-        usage: /<command> [message]
-        aliases: [oc, ochat]
+#        description: Use the Owner chat.
+#        usage: /<command> [message]
+#        aliases: [oc, ochat]

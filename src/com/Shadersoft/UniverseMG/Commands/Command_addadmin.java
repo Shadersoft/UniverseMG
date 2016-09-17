@@ -9,6 +9,8 @@ import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
+import java.util.Arrays;
+import java.util.List;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -50,7 +52,6 @@ public class Command_addadmin implements UMGCommand
         }
 
         Rank.addAdmin(player, rank);
-        player.setOp(true);
         ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " - Adding " + ChatColor.YELLOW + player.getName()
                            + ChatColor.RED + " to the rank " + ChatColor.YELLOW + rank.getDisplayName());
 
@@ -61,6 +62,24 @@ public class Command_addadmin implements UMGCommand
     public Rank getRank()
     {
         return Rank.DEV;
+    }
+
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> <player> <rank>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Adds an admin.";
     }
 }
 

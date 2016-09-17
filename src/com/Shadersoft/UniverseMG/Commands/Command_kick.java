@@ -3,6 +3,8 @@ package com.Shadersoft.UniverseMG.Commands;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
+import java.util.Arrays;
+import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -76,5 +78,21 @@ public class Command_kick implements UMGCommand {
     {
         return Rank.ADMIN;
     }
-    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("");
     }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> <player> <reason>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Kick a player.";
+    }
+}

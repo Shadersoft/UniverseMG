@@ -6,7 +6,11 @@ import org.bukkit.entity.Player;
 
 
 import com.Shadersoft.UniverseMG.UniverseMG;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import static org.bukkit.Bukkit.getOfflinePlayer;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 
 public enum Rank
@@ -138,6 +142,20 @@ public enum Rank
             }
         }
         return onlineStaff;
+    }
+    
+    public static HashMap<OfflinePlayer, Rank> getOfflineStaff()
+    {
+        HashMap<OfflinePlayer, Rank> admins = new HashMap();
+                
+        for(String pname : plugin.config.getConfigurationSection("ranks").getKeys(false))
+        {
+            OfflinePlayer p = getOfflinePlayer(pname);
+            Rank rank = Rank.getRank(plugin.config.getString("ranks." + pname));
+            admins.put(p, rank);
+        }
+        
+        return admins;
     }
 }
 

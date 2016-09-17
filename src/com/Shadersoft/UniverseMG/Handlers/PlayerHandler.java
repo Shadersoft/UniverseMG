@@ -21,9 +21,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+import org.bukkit.permissions.PermissionAttachment;
 
 public class PlayerHandler implements Listener
 {
@@ -92,6 +95,7 @@ public class PlayerHandler implements Listener
         Player player = event.getPlayer();
         Rank playerRank = Rank.getSenderRank((CommandSender)player);
         
+        
         if(plugin.vanishPlayers.contains(player))
         {
             event.setJoinMessage(null);
@@ -121,7 +125,6 @@ public class PlayerHandler implements Listener
         {
             player.kickPlayer(Messages.MOD_TAG + "You are banned from this server");
         }
-        
     }
 }
 

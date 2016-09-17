@@ -6,6 +6,8 @@ import org.bukkit.command.CommandSender;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
+import java.util.Arrays;
+import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -54,6 +56,24 @@ public class Command_maintenance implements UMGCommand
     public Rank getRank()
     {
         return Rank.ADMIN;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("closeserver","adminmode");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> <on|off>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Toggles maintenance on/off.";
     }
 }
 

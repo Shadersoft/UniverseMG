@@ -11,6 +11,8 @@ import com.Shadersoft.UniverseMG.Ranks.ChatType;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
+import java.util.Arrays;
+import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -61,6 +63,24 @@ public class Command_modchat implements UMGCommand
     public Rank getRank()
     {
         return Rank.MODERATOR;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("mc","mchat");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> [message]";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Use the Moderator chat.";
     }
 }
 

@@ -10,6 +10,8 @@ import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.Ranks.RankType;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
+import java.util.Arrays;
+import java.util.List;
 import org.bukkit.ChatColor;
 
 public class TODO_Command_fadmin implements UMGCommand
@@ -104,5 +106,23 @@ public class TODO_Command_fadmin implements UMGCommand
     public Rank getRank()
     {
         return Rank.OWNER;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "lorem ipsum";
     }
 }

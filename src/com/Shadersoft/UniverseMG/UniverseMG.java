@@ -4,7 +4,6 @@ import com.Shadersoft.UniverseMG.Commands.Chats.*;
 import java.util.HashMap;
 import java.util.List;
 
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginDescriptionFile;
@@ -15,15 +14,18 @@ import com.Shadersoft.UniverseMG.Coins.CoinConfig;
 import com.Shadersoft.UniverseMG.Commands.*;
 import com.Shadersoft.UniverseMG.Handlers.*;
 import com.Shadersoft.UniverseMG.Ranks.ChatType;
+import com.Shadersoft.UniverseMG.httpd.HTTPDaemon;
 import java.util.ArrayList;
+import java.util.UUID;
+import static org.bukkit.Bukkit.getPlayer;
+import org.bukkit.permissions.PermissionAttachment;
 
 public class UniverseMG extends JavaPlugin
 {
     public static UniverseMG                               plugin;
-    public HashMap<String, CommandExecutor>                commandList;
     public FileConfiguration                               config;
     public BanConfig                                       banconfig;
-    public CoinConfig                                       coinconfig;
+    public CoinConfig                                      coinconfig;
     public String                                          pluginName;
     public String                                          pluginVersion;
     public List<String>                                    pluginAuthors;
@@ -33,11 +35,16 @@ public class UniverseMG extends JavaPlugin
     public HashMap<Player, String>                         prefixes;
     public List<Player>                                    swearPlayers;
     public List<Player>                                    vanishPlayers;
+    public HashMap<UUID, PermissionAttachment>             permissions;
+    public HTTPDaemon                                      httpDaemon;
 
     @Override
     public void onDisable()
     {
+        HTTPDaemon.stop();
         System.out.println(pluginName + " version " + pluginVersion + " has been disabled!");
+        
+        permissions.clear();
     }
 
     @Override
@@ -45,9 +52,9 @@ public class UniverseMG extends JavaPlugin
     {
         // Initialize Variables
         
-        commandList   = new HashMap();
+        permissions   = new HashMap();
         banconfig     = new BanConfig(this);
-        coinconfig     = new CoinConfig(this);
+        coinconfig    = new CoinConfig(this);
         plugin        = this;
         config        = getConfig();
         info          = getDescription();
@@ -58,8 +65,12 @@ public class UniverseMG extends JavaPlugin
         muted         = new ArrayList();
         prefixes      = new HashMap();
         swearPlayers  = new ArrayList();
-        vanishPlayers  = new ArrayList();
-
+        vanishPlayers = new ArrayList();
+        
+        
+        // Start HTTPD
+        HTTPDaemon.start();
+        
         // Initialize Commands
         getCommand("universemg").setExecutor(new Command_universemg());
         getCommand("addadmin").setExecutor(new Command_addadmin());

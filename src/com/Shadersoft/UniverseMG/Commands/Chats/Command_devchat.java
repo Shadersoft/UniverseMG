@@ -11,6 +11,8 @@ import com.Shadersoft.UniverseMG.Ranks.ChatType;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
+import java.util.Arrays;
+import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -61,6 +63,24 @@ public class Command_devchat implements UMGCommand
     public Rank getRank()
     {
         return Rank.DEV;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("dc","dchat");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> [message]";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Use the Developer chat.";
     }
 }
 

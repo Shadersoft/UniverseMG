@@ -6,6 +6,8 @@ import org.bukkit.command.CommandSender;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
+import java.util.Arrays;
+import java.util.List;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import static org.bukkit.Bukkit.getPlayer;
@@ -76,6 +78,24 @@ public class Command_mute implements UMGCommand
     public Rank getRank()
     {
         return Rank.ADMIN;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("stfu");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> <<player>|list|off|purge> [player]";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Mute a player.";
     }
 }
 

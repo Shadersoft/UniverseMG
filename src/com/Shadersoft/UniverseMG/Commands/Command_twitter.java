@@ -10,6 +10,8 @@ import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
+import java.util.Arrays;
+import java.util.List;
 
 public class Command_twitter implements UMGCommand
 {
@@ -44,6 +46,24 @@ public class Command_twitter implements UMGCommand
     public Rank getRank()
     {
         return Rank.PLAYER;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("twitterhandle");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Shows twitter info.";
     }
 }
 

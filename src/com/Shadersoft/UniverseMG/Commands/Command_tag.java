@@ -10,6 +10,8 @@ import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
+import java.util.Arrays;
+import java.util.List;
 import static org.bukkit.Bukkit.getPlayer;
 import org.bukkit.entity.Player;
 
@@ -32,7 +34,7 @@ public class Command_tag implements UMGCommand
             return false;
         }
         
-        if(args[0].equalsIgnoreCase("clean"))
+        if(args[0].equalsIgnoreCase("clean") && Rank.getSenderRank(sender).equals(Rank.MODERATOR))
         {
             ChatUtils.bCastMsg(Messages.MOD_TAG + sender.getName() + " cleaned all tags.");
             for(Player tagPlr : plugin.prefixes.keySet())
@@ -41,12 +43,12 @@ public class Command_tag implements UMGCommand
                 plugin.prefixes.put(tagPlr, ChatUtils.colorize(newTag));
             }
         }
-        else if(args[0].equalsIgnoreCase("clear"))
+        else if(args[0].equalsIgnoreCase("clear") && Rank.getSenderRank(sender).equals(Rank.MODERATOR))
         {
-             ChatUtils.bCastMsg(Messages.MOD_TAG + sender.getName() + " cleared all tags.");
+            ChatUtils.bCastMsg(Messages.MOD_TAG + sender.getName() + " cleared all tags.");
             plugin.prefixes.clear();
         }
-        else if(args[0].equalsIgnoreCase("off"))
+        else if(args[0].equalsIgnoreCase("off") && Rank.getSenderRank(sender).equals(Rank.MODERATOR))
         {
             ChatUtils.bCastMsg(Messages.MOD_TAG + sender.getName() + " cleared the tag of " + args[1]);
             plugin.prefixes.remove(getPlayer(args[1]));
@@ -63,7 +65,25 @@ public class Command_tag implements UMGCommand
     @Override
     public Rank getRank()
     {
-        return Rank.MODERATOR;
+        return Rank.PLAYER;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> <tag|clean|clear|off>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Set your tag.";
     }
 }
 

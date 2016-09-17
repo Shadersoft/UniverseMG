@@ -9,6 +9,8 @@ import org.bukkit.command.CommandSender;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
+import java.util.Arrays;
+import java.util.List;
 
 public class Command_universemg implements UMGCommand
 {
@@ -46,6 +48,23 @@ public class Command_universemg implements UMGCommand
     public Rank getRank()
     {
         return Rank.PLAYER;
+    }
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("umg");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Shows information about the plugin.";
     }
 }
 

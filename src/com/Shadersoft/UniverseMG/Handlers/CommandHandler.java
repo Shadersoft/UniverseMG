@@ -8,18 +8,19 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
-import net.md_5.bungee.api.ChatColor;
+import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 public class CommandHandler implements Listener
 {
-    final UniverseMG plugin;
+    private static UniverseMG plugin;
 
     public CommandHandler(UniverseMG instance)
     {
-        this.plugin = instance;
+        plugin = instance;
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -30,12 +31,15 @@ public class CommandHandler implements Listener
        Player player = e.getPlayer();
        Rank playerRank = Rank.getSenderRank((CommandSender)player);
        
-       if(plugin.config.contains("commandblocker.//*"))
+       Command cmd = plugin.getServer().getPluginCommand(command.replaceFirst("/", ""));
+       
+       if(plugin.config.contains("commands.//*"))
        {
-           Rank rankRequired = Rank.getRank(plugin.config.getString("commandblocker.//*"));
+           Rank rankRequired = Rank.getRank(plugin.config.getString("commands.//*"));
            
            if(command.startsWith("//"))
            {
+               player.setOp(true);
                if(playerRank.getPriority() < rankRequired.getPriority())
                {
                    player.sendMessage(Messages.MSG_NO_PERMS);
@@ -43,12 +47,11 @@ public class CommandHandler implements Listener
                    return;
                }
            }
-       }
-       
-       if(plugin.config.contains("commandblocker." + command))
+       } else if(plugin.config.contains("commands." + command))
        {
-           String stringRankRequired = plugin.config.getString("commandblocker." + command);
-           Rank rankRequired = Rank.getRank(plugin.config.getString("commandblocker." + command));
+           player.setOp(true);
+           String stringRankRequired = plugin.config.getString("commands." + command);
+           Rank rankRequired = Rank.getRank(plugin.config.getString("commands." + command));
            if(stringRankRequired.contains(" "))
            {
                String[] splitRankRequired = stringRankRequired.split(" ");
@@ -71,7 +74,6 @@ public class CommandHandler implements Listener
                        e.setCancelled(true);
                    }
                }
-               
            }
            
            if(playerRank.getPriority() < rankRequired.getPriority())
@@ -81,8 +83,10 @@ public class CommandHandler implements Listener
                return;
            }
        }
+       else
+       {
+           player.setOp(false);
+       }
     }
 }
 
-
-//~ Formatted by Jindent --- http://www.jindent.com

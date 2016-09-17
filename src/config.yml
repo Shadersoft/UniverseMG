@@ -32,6 +32,8 @@ commandblocker:
   /gamemode: ADMIN
   /give: ADMIN
   /kill: ADMIN
+  # UMG commands
+  /tag: HELPER
   # Essentials commands
   /i: ADMIN
   /gmc: ADMIN
@@ -83,3 +85,9 @@ tablist:
 overlord-ips:
  - 127.0.0.1
  - 89.160.85.9
+ 
+
+# Server HTTPD
+httpd:
+    enabled: true
+    port: 80

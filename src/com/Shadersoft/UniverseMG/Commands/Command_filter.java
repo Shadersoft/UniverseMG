@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
+import java.util.Arrays;
+import java.util.List;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -55,6 +57,24 @@ public class Command_filter implements UMGCommand
     public Rank getRank()
     {
         return Rank.PLAYER;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> <swear>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Filter away some things.";
     }
 }
 

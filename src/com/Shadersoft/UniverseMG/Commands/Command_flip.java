@@ -6,6 +6,8 @@ import org.bukkit.command.CommandSender;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -74,6 +76,24 @@ public class Command_flip implements UMGCommand
     public Rank getRank()
     {
         return Rank.HELPER;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> [x] [y] [z]";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Flips a lever.";
     }
 }
 

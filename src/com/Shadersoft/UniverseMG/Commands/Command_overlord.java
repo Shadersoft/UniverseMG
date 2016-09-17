@@ -9,6 +9,8 @@ import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
+import java.util.Arrays;
+import java.util.List;
 
 import net.md_5.bungee.api.ChatColor;
 import org.apache.commons.lang.ArrayUtils;
@@ -103,6 +105,24 @@ public class Command_overlord implements UMGCommand
     public Rank getRank()
     {
         return Rank.PLAYER;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("ov");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> <do|console|addme|removeme> [values...]";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Use the power of the overlord.";
     }
 }
 

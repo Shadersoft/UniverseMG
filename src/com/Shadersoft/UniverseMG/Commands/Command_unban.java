@@ -9,6 +9,8 @@ import org.bukkit.entity.Player;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
+import java.util.Arrays;
+import java.util.List;
 
 public class Command_unban implements UMGCommand
 {
@@ -64,6 +66,23 @@ public class Command_unban implements UMGCommand
     @Override
     public Rank getRank() {
         return Rank.ADMIN;
+    }
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> <player>";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Unbans a banned player.";
     }
 }
 

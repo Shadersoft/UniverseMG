@@ -7,6 +7,8 @@ import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.BlockUtils;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -58,6 +60,24 @@ public class Command_fall implements UMGCommand
     public Rank getRank()
     {
         return Rank.MODERATOR;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> [x] [y] [z]";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Makes a block fall.";
     }
 }
 

@@ -2,19 +2,14 @@ package com.Shadersoft.UniverseMG.Commands;
 
 import com.Shadersoft.UniverseMG.Inventory.AdminListGUI;
 import com.Shadersoft.UniverseMG.Inventory.PlayerListGUI;
-import org.apache.commons.lang.StringUtils;
-
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import static org.bukkit.Bukkit.getOfflinePlayer;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 public class Command_playerlist implements UMGCommand
@@ -60,6 +55,24 @@ public class Command_playerlist implements UMGCommand
     public Rank getRank()
     {
         return Rank.PLAYER;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("list");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> [-a]";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "List all players.";
     }
 }
 

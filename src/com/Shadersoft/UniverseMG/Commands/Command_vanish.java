@@ -5,6 +5,8 @@ import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import com.Shadersoft.UniverseMG.utils.ChatUtils;
 import static com.Shadersoft.UniverseMG.utils.ChatUtils.msg;
+import java.util.Arrays;
+import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -99,5 +101,23 @@ public class Command_vanish implements UMGCommand
         }
         
         return true;
+    }
+    
+    @Override
+    public List<String> getAliases() 
+    {
+        return Arrays.asList("v","admin");
+    }
+
+    @Override
+    public String getUsage() 
+    {
+        return "/<command> [on|off]";
+    }
+
+    @Override
+    public String getDescription() 
+    {
+        return "Hides you.";
     }
 }
