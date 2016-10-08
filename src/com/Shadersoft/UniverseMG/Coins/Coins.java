@@ -6,7 +6,6 @@
 
 package com.Shadersoft.UniverseMG.Coins;
 
-import com.Shadersoft.UniverseMG.Coins.*;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -17,8 +16,8 @@ import org.bukkit.entity.Player;
  */
 public class Coins 
 {
-    private static UniverseMG plugin = UniverseMG.plugin;
-    private static FileConfiguration config = plugin.coinconfig.getConfig();
+    private static final UniverseMG plugin = UniverseMG.plugin;
+    private static final FileConfiguration config = plugin.coinconfig.getConfig();
     
     public static int get(Player player)
     {

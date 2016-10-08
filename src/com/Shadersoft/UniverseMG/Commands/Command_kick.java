@@ -41,7 +41,7 @@ public class Command_kick implements UMGCommand {
             return true;
         }
 
-        if(args[0].equals(sender))
+        if(args[0].equals(sender.getName()))
         {
         	sender.sendMessage(Messages.MOD_TAG + "You cannot kick yourself!");
         }

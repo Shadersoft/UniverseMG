@@ -21,7 +21,7 @@ public class Command_adminchat implements UMGCommand
     public UniverseMG plugin = UniverseMG.plugin;
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) 
     {
         if(Rank.getSenderRank(sender).getPriority() < this.getRank().getPriority())
         {

@@ -1,6 +1,5 @@
 package com.Shadersoft.UniverseMG.Coins;
 
-import com.Shadersoft.UniverseMG.Banning.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -49,7 +48,6 @@ public class CoinConfig
         }
         catch(IOException e)
         {
-            e.printStackTrace();
         }
     }
 

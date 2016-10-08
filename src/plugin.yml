@@ -76,26 +76,30 @@ commands:
         description: Hides the player.
         usage: /<command> [on|off]
         aliases: [v,admin]
+    fadmin:
+        description: Tells admins to fuck off.
+        usage: /<command> <admin>
+        aliases: [doom]
     
     #Chats
     
     helperchat:
-#        description: Use the Helper chat.
-#        usage: /<command> [message]
-#        aliases: [hc, hchat]
+        description: Use the Helper chat.
+        usage: /<command> [message]
+        aliases: [hc, hchat]
     modchat:
-#        description: Use the Moderator chat.
-#        usage: /<command> [message]
-#        aliases: [mc, mchat]
+        description: Use the Moderator chat.
+        usage: /<command> [message]
+        aliases: [mc, mchat]
     adminchat:
-#        description: Use the Admin chat.
-#        usage: /<command> [message]
-#        aliases: [ac, achat, o]
+        description: Use the Admin chat.
+        usage: /<command> [message]
+        aliases: [ac, achat, o]
     devchat:
-#        description: Use the Developer chat.
-#        usage: /<command> [message]
-#        aliases: [dc, dchat]
+        description: Use the Developer chat.
+        usage: /<command> [message]
+        aliases: [dc, dchat]
     ownerchat:
-#        description: Use the Owner chat.
-#        usage: /<command> [message]
-#        aliases: [oc, ochat]
+        description: Use the Owner chat.
+        usage: /<command> [message]
+        aliases: [oc, ochat]

@@ -50,22 +50,23 @@ public class Command_mute implements UMGCommand
                 case "OFF":
                 {
                     if(args.length != 2) {return true;}
-                    if(!plugin.muted.contains((Player)sender))
+                    getPlr = Bukkit.getPlayer(args[1]);
+                    if(!plugin.muted.contains(getPlr))
                     {
                         sender.sendMessage(ChatColor.RED + "Player is not muted.");
                         return true;
                     }
-                    ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " is un-muting " + getPlr.getName());
+                    ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " unmuted " + getPlr.getName());
                     plugin.muted.remove(getPlr);
                     return true;
                 }
                 case "PURGE":
                 {
                     if(args.length != 1) {return true;}
-                    ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " is un-muting all players. .");
+                    ChatUtils.bCastMsg(ChatColor.RED + sender.getName() + " is un-muting all players.");
                     for(Player p : plugin.muted)
                     {
-                        plugin.muted.remove(getPlr);
+                        plugin.muted.remove(p);
                     }
                     return true;
                 }

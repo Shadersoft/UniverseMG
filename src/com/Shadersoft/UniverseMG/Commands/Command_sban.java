@@ -16,6 +16,7 @@ public class Command_sban implements UMGCommand
 {
     private final UniverseMG plugin = UniverseMG.plugin;
 
+    @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
     {
         if(Rank.getSenderRank(sender).getPriority() < this.getRank().getPriority())

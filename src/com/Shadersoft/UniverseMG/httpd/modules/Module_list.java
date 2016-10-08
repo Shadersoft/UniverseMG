@@ -34,7 +34,8 @@ public class Module_list extends HTTPDModule
 
         for (Player player : onlinePlayers)
         {
-            String tag = "[" + Rank.getSenderRank((CommandSender)player).getTag() + "] ";
+            String tag = "";
+            if(Rank.getSenderRank((CommandSender)player).getTag() != "") {tag = "[" + Rank.getSenderRank((CommandSender)player).getTag() + "] ";}
             body.append("<li>").append(tag).append(player.getName()).append("</li>\r\n");
         }
 

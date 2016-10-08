@@ -17,7 +17,6 @@ import com.Shadersoft.UniverseMG.Ranks.ChatType;
 import com.Shadersoft.UniverseMG.httpd.HTTPDaemon;
 import java.util.ArrayList;
 import java.util.UUID;
-import static org.bukkit.Bukkit.getPlayer;
 import org.bukkit.permissions.PermissionAttachment;
 
 public class UniverseMG extends JavaPlugin
@@ -93,6 +92,7 @@ public class UniverseMG extends JavaPlugin
         getCommand("twitter").setExecutor(new Command_twitter());
         getCommand("points").setExecutor(new Command_points());
         getCommand("vanish").setExecutor(new Command_vanish());
+        getCommand("fadmin").setExecutor(new Command_fadmin());
         
         //  Chat Commands        
         getCommand("helperchat").setExecutor(new Command_helperchat());
