@@ -3,6 +3,7 @@ package com.Shadersoft.UniverseMG.Handlers;
 import com.Shadersoft.UniverseMG.Coins.Coins;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
+import com.Shadersoft.UniverseMG.Ranks.RankType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -75,12 +76,20 @@ public class CommandHandler implements Listener
                    }
                }
            }
-           
-           if(playerRank.getPriority() < rankRequired.getPriority())
-           {
-               player.sendMessage(Messages.MSG_NO_PERMS);
-               e.setCancelled(true);
-               return;
+
+           if(rankRequired.getType() != RankType.SPECIAL) {
+               if (playerRank.getPriority() < rankRequired.getPriority()) {
+                   player.sendMessage(Messages.MSG_NO_PERMS);
+                   e.setCancelled(true);
+                   return;
+               }
+           }
+           else {
+               if (playerRank != rankRequired) {
+                   player.sendMessage(Messages.MSG_NO_PERMS);
+                   e.setCancelled(true);
+                   return;
+               }
            }
        }
        else
