@@ -1,5 +1,7 @@
 #UniveseMG Config
 
+server_name: UniverseMG
+
 # Is server in maintenance?
 maintenance_mode: false
 
@@ -81,6 +83,9 @@ tablist:
    - '&a%playercount% &bPlayers Online'
   footer:
    - '&bJoin our Forum at &a%forum%'
+
+# Default ban reason
+default-ban-reason: 'The ban hammer has spoken!'
 
 overlord-ips:
  - 127.0.0.1
