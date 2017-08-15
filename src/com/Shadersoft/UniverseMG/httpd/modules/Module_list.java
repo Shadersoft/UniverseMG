@@ -47,6 +47,6 @@ public class Module_list extends HTTPDModule
     @Override
     public String getTitle()
     {
-        return "UniverseMG - " + String.valueOf(Bukkit.getOnlinePlayers().size()) + " Online Users";
+        return UniverseMG.plugin.config.getString("server_name") + " - " + String.valueOf(Bukkit.getOnlinePlayers().size()) + " Online Users";
     }
 }

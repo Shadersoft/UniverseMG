@@ -76,7 +76,7 @@ public class Command_ban implements UMGCommand
             }
             else
             {
-                String reason = "Your account has been suspended from UniverseMG";
+                String reason = "Your account has been suspended from " + plugin.config.getString("server_name");
 
                 target.setBanReason(reason);
                 target.setBanned(true, BanList.Type.NAME, new Date(TimeUtils.yearsToMillis(256)));
@@ -85,7 +85,7 @@ public class Command_ban implements UMGCommand
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
                     p.sendMessage(Messages.STAFF + sender.getName() + " BANNED " + offlineTarget.getName()
-                                  + " from " + plugin.config.getString("server-name") + " for " + reason);
+                                  + " from " + plugin.config.getString("server_name") + " for " + reason);
                 }
 
                 this.plugin.banconfig.getConfig().set(offlineTarget.getName().toLowerCase(), reason);
@@ -154,7 +154,7 @@ public class Command_ban implements UMGCommand
                     }
                 }
 
-                target.kickPlayer("Your account has been suspended from UniverseMG \nReason: \"" + reason + "\"\nBan Expires: " + dateFormat.format(expires));
+                target.kickPlayer("Your account has been suspended from " + plugin.config.getString("server_name") + " \nReason: \"" + reason + "\"\nBan Expires: " + dateFormat.format(expires));
                 target.setBanReason(reason);
                 target.setBanned(true, BanList.Type.NAME, expires);
                 sender.sendMessage(Messages.MOD_TAG + "BANNED " + ChatColor.DARK_RED + target.getName() + " until " + dateFormat.format(expires));
@@ -162,7 +162,7 @@ public class Command_ban implements UMGCommand
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
                     p.sendMessage(Messages.STAFF + sender.getName() + " BANNED " + target.getName()
-                                  + " from UniverseMG until " + dateFormat.format(expires) + " for \"" + reason + "\"");
+                                  + " from " + plugin.config.getString("server_name") + " until " + dateFormat.format(expires) + " for \"" + reason + "\"");
                 }
 
                 this.plugin.banconfig.getConfig().set(target.getName().toLowerCase(), reason);
@@ -186,7 +186,7 @@ public class Command_ban implements UMGCommand
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
                     p.sendMessage(Messages.STAFF + sender.getName() + " BANNED " + offlineTarget.getName()
-                            + " from UniverseMG until " + dateFormat.format(expires) + " for \"" + reason + "\"");
+                            + " from " + plugin.config.getString("server_name") + " until " + dateFormat.format(expires) + " for \"" + reason + "\"");
                 }
 
                 this.plugin.banconfig.getConfig().set(offlineTarget.getName().toLowerCase(), reason);

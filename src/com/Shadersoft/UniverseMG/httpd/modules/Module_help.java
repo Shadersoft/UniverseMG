@@ -177,7 +177,7 @@ public class Module_help extends HTTPDModule
     @Override
     public String getTitle()
     {
-        return "UniverseMG - Commands";
+        return UniverseMG.plugin.config.getString("server_name") + " - Commands";
     }
 
     @Override
