@@ -1,5 +1,10 @@
 package com.Shadersoft.UniverseMG.Commands;
 
+import com.Shadersoft.UniverseMG.utils.TimeUtils;
+import com.Shadersoft.UniverseMG.utils.UMGOfflinePlayer;
+import com.Shadersoft.UniverseMG.utils.UMGPlayer;
+import org.apache.commons.lang.math.NumberUtils;
+import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -9,6 +14,11 @@ import org.bukkit.entity.Player;
 import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
+
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import net.md_5.bungee.api.ChatColor;
@@ -29,7 +39,7 @@ public class Command_ban implements UMGCommand
         
         if(args.length == 0)
         {
-            sender.sendMessage(Messages.MOD_TAG + "Usage: /ban <player> <reason>");
+            sender.sendMessage(Messages.MOD_TAG + "Usage: /ban <player> <time> <reason>");
             return true;
         }
         
@@ -42,23 +52,23 @@ public class Command_ban implements UMGCommand
         }
         else if(args.length == 1)
         {
-            Player        target        = this.plugin.getServer().getPlayer(args[0]);
-            OfflinePlayer offlineTarget = this.plugin.getServer().getOfflinePlayer(args[0]);
+            UMGPlayer        target        = (UMGPlayer) this.plugin.getServer().getPlayer(args[0]);
+            UMGOfflinePlayer offlineTarget = (UMGOfflinePlayer) this.plugin.getServer().getOfflinePlayer(args[0]);
 
             if(target != null)
             {
                 String reason = "You broke the server rules!";
 
-                target.kickPlayer(Messages.MOD_TAG + sender.getName() + " has banned you " + reason
-                                  + " appeal at " + plugin.config.getString("forums"));
-                target.setBanned(true);
+                target.setBanReason(reason);
+                target.kickPlayer(Messages.MOD_TAG + sender.getName() + " has banned you for: " + reason
+                                  + ", appeal at " + plugin.config.getString("forums"));
+                target.setBanned(true, BanList.Type.NAME, new Date(TimeUtils.yearsToMillis(256)));
                 sender.sendMessage(Messages.MOD_TAG + "BANNED " + ChatColor.DARK_RED + target.getName());
-                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "minecraft:ban " + target.getName() + " " + reason);
 
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
                     p.sendMessage(Messages.STAFF + sender.getName() + " banned " + target.getName()
-                                  + " from the server for " + reason);
+                                  + " from the server for: " + reason);
                 }
 
                 this.plugin.banconfig.getConfig().set(target.getName().toLowerCase(), reason);
@@ -66,16 +76,16 @@ public class Command_ban implements UMGCommand
             }
             else
             {
-                String reason = "Your account have been suspended from UniverseMG";
+                String reason = "Your account has been suspended from UniverseMG";
 
-                offlineTarget.setBanned(true);
-                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "minecraft:ban " + offlineTarget.getName() + " " + reason);
+                target.setBanReason(reason);
+                target.setBanned(true, BanList.Type.NAME, new Date(TimeUtils.yearsToMillis(256)));
                 sender.sendMessage(Messages.MOD_TAG + "BANNED " + ChatColor.DARK_RED + offlineTarget.getName());
 
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
                     p.sendMessage(Messages.STAFF + sender.getName() + " BANNED " + offlineTarget.getName()
-                                  + " from UniverseMG for " + reason);
+                                  + " from " + plugin.config.getString("server-name") + " for " + reason);
                 }
 
                 this.plugin.banconfig.getConfig().set(offlineTarget.getName().toLowerCase(), reason);
@@ -84,27 +94,75 @@ public class Command_ban implements UMGCommand
         }
         else if(args.length >= 2)
         {
-            Player        target        = this.plugin.getServer().getPlayer(args[0]);
-            OfflinePlayer offlineTarget = this.plugin.getServer().getOfflinePlayer(args[0]);
+            UMGPlayer        target        = (UMGPlayer) this.plugin.getServer().getPlayer(args[0]);
+            UMGOfflinePlayer offlineTarget = (UMGOfflinePlayer) this.plugin.getServer().getOfflinePlayer(args[0]);
+            String[] dateValues = args[1].split(":");
+            long dateMillis = 0;
+
+            for(String value : dateValues) {
+                if(!NumberUtils.isNumber(value.substring(0, value.length() - 1))) {
+                    sender.sendMessage(Messages.MOD_TAG + "You have not specified a correct date.");
+                    return true;
+                }
+
+                String dateType = value.substring(value.length() - 1, 1);
+                int amount = Integer.parseInt(value.substring(0, value.length() - 1));
+
+                switch(dateType) {
+                    case "s":
+                        dateMillis += TimeUtils.secondsToMillis(amount);
+                        break;
+
+                    case "m":
+                        dateMillis += TimeUtils.minutesToMillis(amount);
+                        break;
+
+                    case "h":
+                        dateMillis += TimeUtils.hoursToMillis(amount);
+                        break;
+
+                    case "d":
+                        dateMillis += TimeUtils.daysToMillis(amount);
+                        break;
+
+                    case "y":
+                        dateMillis += TimeUtils.yearsToMillis(amount);
+                        break;
+
+                    default:
+                        sender.sendMessage(Messages.MOD_TAG + "You have not specified a correct date.");
+                        return true;
+                }
+            }
+            LocalDateTime currentDate = LocalDateTime.now();
+            Date expires = new Date(TimeUtils.secondsToMillis(currentDate.getSecond()) +
+                    TimeUtils.minutesToMillis(currentDate.getMinute()) +
+                    TimeUtils.hoursToMillis(currentDate.getHour()) +
+                    TimeUtils.daysToMillis(currentDate.getDayOfYear()) +
+                    TimeUtils.yearsToMillis(currentDate.getYear()) +
+                    dateMillis);
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd at HH:mm");
 
             if(target != null)
             {
-                String reason = "";
+                String reason = target.getBanReason();
 
-                for (int i = 1; i < args.length; i++)
-                {
-                    reason = reason + args[i] + " ";
+                if(args.length >= 3) {
+                    for (int i = 2; i < args.length; i++)
+                    {
+                        reason = reason + args[i] + " ";
+                    }
                 }
 
-                target.kickPlayer("Your account has been suspended from UniverseMG \nReason: " + reason);
-                target.setBanned(true);
-                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "minecraft:ban " + target.getName() + " " + reason);
-                sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + target.getName());
+                target.kickPlayer("Your account has been suspended from UniverseMG \nReason: \"" + reason + "\"\nBan Expires: " + dateFormat.format(expires));
+                target.setBanReason(reason);
+                target.setBanned(true, BanList.Type.NAME, expires);
+                sender.sendMessage(Messages.MOD_TAG + "BANNED " + ChatColor.DARK_RED + target.getName() + " until " + dateFormat.format(expires));
 
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
                     p.sendMessage(Messages.STAFF + sender.getName() + " BANNED " + target.getName()
-                                  + " from UniverseMG for " + reason);
+                                  + " from UniverseMG until " + dateFormat.format(expires) + " for \"" + reason + "\"");
                 }
 
                 this.plugin.banconfig.getConfig().set(target.getName().toLowerCase(), reason);
@@ -112,21 +170,23 @@ public class Command_ban implements UMGCommand
             }
             else
             {
-                String reason = "";
+                String reason = target.getBanReason();
 
-                for (int i = 1; i < args.length; i++)
-                {
-                    reason = reason + args[i] + " ";
+                if(args.length >= 3) {
+                    for (int i = 2; i < args.length; i++)
+                    {
+                        reason = reason + args[i] + " ";
+                    }
                 }
 
-                offlineTarget.setBanned(true);
-                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "minecraft:ban " + offlineTarget.getName() + " " + reason);
-                sender.sendMessage(Messages.MOD_TAG + "Banned " + ChatColor.DARK_RED + offlineTarget.getName());
-                
+                offlineTarget.setBanReason(reason);
+                offlineTarget.setBanned(true, BanList.Type.NAME, expires);
+                sender.sendMessage(Messages.MOD_TAG + "BANNED " + ChatColor.DARK_RED + offlineTarget.getName() + " until " + dateFormat.format(expires));
+
                 for (Player p : Bukkit.getOnlinePlayers())
                 {
                     p.sendMessage(Messages.STAFF + sender.getName() + " BANNED " + offlineTarget.getName()
-                                  + " from UniveseMG for " + reason);
+                            + " from UniverseMG until " + dateFormat.format(expires) + " for \"" + reason + "\"");
                 }
 
                 this.plugin.banconfig.getConfig().set(offlineTarget.getName().toLowerCase(), reason);
