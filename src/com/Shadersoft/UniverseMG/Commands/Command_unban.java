@@ -1,5 +1,7 @@
 package com.Shadersoft.UniverseMG.Commands;
 
+import com.Shadersoft.UniverseMG.utils.UMGOfflinePlayer;
+import org.bukkit.BanList;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
@@ -10,6 +12,7 @@ import com.Shadersoft.UniverseMG.Messages;
 import com.Shadersoft.UniverseMG.Ranks.Rank;
 import com.Shadersoft.UniverseMG.UniverseMG;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class Command_unban implements UMGCommand
@@ -34,7 +37,7 @@ public class Command_unban implements UMGCommand
         
         if(args.length >= 1)
         {
-            OfflinePlayer target = this.plugin.getServer().getOfflinePlayer(args[0]);
+            UMGOfflinePlayer target = (UMGOfflinePlayer) this.plugin.getServer().getOfflinePlayer(args[0]);
 
             if(target != null)
             {
@@ -42,7 +45,7 @@ public class Command_unban implements UMGCommand
                 {
                     this.plugin.banconfig.getConfig().set(target.getName().toLowerCase(), null);
                     this.plugin.banconfig.saveConfig();
-                    target.setBanned(false);
+                    target.setBanned(false, BanList.Type.NAME, new Date());
 
                     for (Player p : Bukkit.getOnlinePlayers())
                     {

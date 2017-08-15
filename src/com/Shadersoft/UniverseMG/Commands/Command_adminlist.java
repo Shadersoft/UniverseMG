@@ -37,7 +37,7 @@ public class Command_adminlist implements UMGCommand
         {
             case "LIST":
             {
-                if(Rank.getSenderRank(sender).getPriority() < Rank.PLAYER.getPriority())
+                if(Rank.getSenderRank(sender).getPriority() < Rank.MEMBER.getPriority())
                 {
                     sender.sendMessage(Messages.MSG_NO_PERMS);
                     
@@ -62,7 +62,7 @@ public class Command_adminlist implements UMGCommand
     @Override
     public Rank getRank()
     {
-        return Rank.PLAYER;
+        return Rank.MEMBER;
     }
     @Override
     public List<String> getAliases() 

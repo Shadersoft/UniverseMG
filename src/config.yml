@@ -10,12 +10,6 @@ forums: forumsgoeshere.boards.net
 
 # Main server twitter handle
 twitter: twittergoeshere
-
-# Rank config
-ranks:
-  mafrans: MAINDEV
-  sorryim2fresh: MAINDEV
-  ethanyt: OWNER
  
 filter:
   # Swear words to be filtered in /filter
@@ -28,49 +22,9 @@ filter:
    - vagina
    - pussy
 
-# TODO: Add more commands
-commandblocker:
-  # Vanilla commands
-  /gamemode: ADMIN
-  /give: ADMIN
-  /kill: ADMIN
-  # UMG commands
-  /tag: HELPER
-  # Essentials commands
-  /i: ADMIN
-  /gmc: ADMIN
-  /gms: MODERATOR
-  /gmsp: MODERATOR
-  /fly: MODERATOR
-  /sell: HELPER
-  # Worldedit commands
-  //*: ADMIN
-  /br: ADMIN
-  # BananaFun commands - http://github.com/Mafrans/BananaFun.git
-  /slapfish: MODERATOR
-  /instabow: HELPER
-  /bouncer: HELPER
-  /dynamite: ADMIN
-  /woolbow: ADMIN
-  /megaphone: ADMIN
-  
-  #DEV+ Commands
-  /summon: DEV
-  /sudo: DEV
-  /pardon: DEV
-  /entitydata: DEV
-  /blockdata: DEV
-  /setblock: DEV
-  /fill: DEV
-  /clone: DEV
-  /op: DEV
-  /enderdragon: MAINDEV
-  /rl: DEV
-  /stop: MAINDEV
-  /restart: MAINDEV
-  
-  # Point Commands
-  /nick: COINS:50
+# TODO: Add more permissions
+permissions:
+
   
 # Server list message.
 motd:

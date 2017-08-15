@@ -44,7 +44,7 @@ public class Command_addadmin implements UMGCommand
 
         Rank rank = Rank.getRank(args[1].toUpperCase());
 
-        if(rank == Rank.PLAYER)
+        if(rank == Rank.MEMBER)
         {
             sender.sendMessage(ChatColor.RED + "Rank not found!");
 
@@ -61,7 +61,7 @@ public class Command_addadmin implements UMGCommand
     @Override
     public Rank getRank()
     {
-        return Rank.DEV;
+        return Rank.DEVELOPER;
     }
 
     @Override

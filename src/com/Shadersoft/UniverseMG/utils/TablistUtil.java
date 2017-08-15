@@ -2,10 +2,11 @@ package com.Shadersoft.UniverseMG.utils;
 
 
 import java.lang.reflect.Field;
-import net.minecraft.server.v1_10_R1.IChatBaseComponent;
-import net.minecraft.server.v1_10_R1.PacketPlayOutPlayerListHeaderFooter;
-import net.minecraft.server.v1_10_R1.PlayerConnection;
-import org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer;
+
+import net.minecraft.server.v1_12_R1.IChatBaseComponent;
+import net.minecraft.server.v1_12_R1.PacketPlayOutPlayerListHeaderFooter;
+import net.minecraft.server.v1_12_R1.PlayerConnection;
+import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 

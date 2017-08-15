@@ -40,7 +40,7 @@ public class Command_broadcast implements UMGCommand
         }
         
         String message = StringUtils.join(args, " ");        
-        ChatUtils.announce(Rank.PLAYER, message);
+        ChatUtils.announce(Rank.MEMBER, message);
   
 
         return true;

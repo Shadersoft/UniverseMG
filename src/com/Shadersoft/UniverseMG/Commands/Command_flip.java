@@ -75,7 +75,7 @@ public class Command_flip implements UMGCommand
     @Override
     public Rank getRank()
     {
-        return Rank.HELPER;
+        return Rank.JUNIORMOD;
     }
     
     @Override

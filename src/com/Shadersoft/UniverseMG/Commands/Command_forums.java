@@ -44,7 +44,7 @@ public class Command_forums implements UMGCommand
     @Override
     public Rank getRank()
     {
-        return Rank.PLAYER;
+        return Rank.MEMBER;
     }
     
     @Override

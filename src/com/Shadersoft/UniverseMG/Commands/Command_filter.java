@@ -56,7 +56,7 @@ public class Command_filter implements UMGCommand
     @Override
     public Rank getRank()
     {
-        return Rank.PLAYER;
+        return Rank.MEMBER;
     }
     
     @Override

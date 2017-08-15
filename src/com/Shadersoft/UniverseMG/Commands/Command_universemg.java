@@ -47,7 +47,7 @@ public class Command_universemg implements UMGCommand
     @Override
     public Rank getRank()
     {
-        return Rank.PLAYER;
+        return Rank.MEMBER;
     }
     @Override
     public List<String> getAliases() 

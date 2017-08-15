@@ -65,7 +65,7 @@ public class Command_tag implements UMGCommand
     @Override
     public Rank getRank()
     {
-        return Rank.PLAYER;
+        return Rank.MEMBER;
     }
     
     @Override
